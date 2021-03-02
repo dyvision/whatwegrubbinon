@@ -97,3 +97,9 @@ a:focus {
     padding-right: 5%;
     overflow-wrap: normal;
 }
+
+.banner {
+    height: 300px;
+    object-fit: cover;
+    background-image: 'style/banner.jpg';
+}
