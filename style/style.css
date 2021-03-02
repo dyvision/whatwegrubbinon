@@ -91,3 +91,9 @@ a:focus {
     height: 80px;
     display: block;
 }
+
+.row {
+    padding-left: 5%;
+    padding-right: 5%;
+    overflow-wrap: normal;
+}
