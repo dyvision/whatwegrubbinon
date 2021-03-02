@@ -7,7 +7,21 @@
 </head>
 
 <?php
-$header = "<div id='navbar'><h3 class='navbar-item'>What We Grubbin' On</h3><h3 class='navbar-item'>Food</h3><h3 class='navbar-item'>Profile</h3><div class='g-signin2'  data-onsuccess='onSignIn' data-redirecturi='https://whatwegrubbinon.com/profile.php'></div></div>";
+if (isset($_COOKIE['id'])) {
+    $header = "<div id='navbar'>
+    <h3 class='navbar-item'>What We Grubbin' On</h3>
+    <h3 class='navbar-item'>Food</h3>
+    <h3 class='navbar-item'>Profile</h3>
+    <h3 class='navbar-item'>Logout</h3>
+    </div>";
+} else {
+    $header = "<div id='navbar'>
+<h3 class='navbar-item'>What We Grubbin' On</h3>
+<h3 class='navbar-item'>Food</h3>
+<h3 class='navbar-item'>Profile</h3>
+<div class='g-signin2'  data-onsuccess='onSignIn' data-redirecturi='https://whatwegrubbinon.com/profile.php'></div>
+</div>";
+}
 ?>
 
 <body>
