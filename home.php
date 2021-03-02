@@ -15,8 +15,10 @@ $header = "<div id='navbar'><h3 class='navbar-item'>What We Grubbin' On</h3><h3 
     <span class='spacer'></span>
     
         <center class='banner'>
+        <div>
             <h1>What We Grubbin' On?</h1>
             <span>Find out what you're going to eat tonight. Make a list of interesting foods and have our app randomly suggest one for tonight</span>
+            </div>
         </center>
         <div class='row'>
     </div>
