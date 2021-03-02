@@ -12,7 +12,7 @@ if (isset($_COOKIE['id'])) {
     <h3 class='navbar-item'>What We Grubbin' On</h3>
     <h3 class='navbar-item'><a href='Food.php'>Food</a></h3>
     <h3 class='navbar-item'><a href='profile.php'>Profile</a></h3>
-    <h3 class='navbar-item' onclick='logout();'>Logout</h3>
+    <h3 class='navbar-item' onclick='logout();'><a>Logout</a></h3>
     </div>";
 } else {
     $header = "<div id='navbar'>
