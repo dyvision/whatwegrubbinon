@@ -1,0 +1,75 @@
+div {
+    display: inline-block;
+    overflow-wrap: normal;
+}
+
+body {
+    background: linear-gradient(2deg, #fafafa, #f5f5f5);
+    color: rgb(0, 0, 0);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0%;
+    vertical-align: top;
+}
+
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    transition: ease 300ms;
+    display: block;
+}
+
+a:hover {
+    color: rgb(178, 255, 175);
+    transition: ease 300ms;
+    cursor: pointer;
+}
+
+a:focus {
+    color: rgb(224, 224, 224);
+    transition: ease 300ms;
+}
+
+.block {
+    padding: 0%;
+    box-shadow: 2px 4px 8px black;
+    margin: 1%;
+    transition: ease 300ms;
+    min-width: 275px;
+    max-width: 300px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.block:hover {
+    box-shadow: 2px 4px 8px rgb(163, 163, 163);
+    transition: ease 300ms;
+}
+
+.profile {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.songlist {
+    padding: 10px;
+}
+
+#sidebar {
+    width: 300px;
+    height: 100%;
+    background-color: rgb(134, 134, 134);
+    box-shadow: 2px 4px 8px black;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: ease 300ms;
+    transform: translate(-100%);
+}
+
+.navbar-item {
+    display: inline-block;
+    margin: 2%;
+}
