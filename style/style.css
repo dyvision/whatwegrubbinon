@@ -78,7 +78,7 @@ a:focus {
     z-index: 1;
     top: 0;
     left: 0;
-    overflow-x: hidden;
+    overflow-y: hidden;
     transition: ease 300ms;
 }
 
