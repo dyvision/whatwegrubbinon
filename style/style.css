@@ -105,6 +105,10 @@ a:focus {
     color: white;
 }
 
+.banner-title {
+    padding: 6% 0;
+}
+
 h1 {
     margin: 0;
 }
