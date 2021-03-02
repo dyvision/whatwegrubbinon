@@ -102,4 +102,5 @@ a:focus {
     height: 300px;
     object-fit: cover;
     background-image: 'style/banner.jpg';
+    color: white;
 }
