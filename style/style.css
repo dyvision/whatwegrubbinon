@@ -69,6 +69,19 @@ a:focus {
     transform: translate(-100%);
 }
 
+#navbar {
+    height: 100px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 4px 8px black;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: ease 300ms;
+}
+
 .navbar-item {
     display: inline-block;
     margin: 2%;
