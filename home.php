@@ -7,20 +7,22 @@
 </head>
 
 <?php
-$header = "<div id='navbar'><h3 class='navbar-item'>What We Grubbin' On</h3><h3 class='navbar-item'>Food</h3><h3 class='navbar-item'>Profile</h3><div class='g-signin2' data-onsuccess='onSignIn'></div></div>";
+$header = "<div id='navbar'><h3 class='navbar-item'>What We Grubbin' On</h3><h3 class='navbar-item'>Food</h3><h3 class='navbar-item'>Profile</h3><div class='g-signin2' data-redirecturi='https://whatwegrubbinon.com/profile.php' data-onsuccess='onSignIn'></div></div>";
 ?>
 
 <body>
     <?php echo $header; ?>
     <span class='spacer'></span>
-    
-        <center class='banner'>
+
+    <center class='banner'>
         <div class='banner-title'>
             <h1>What We Grubbin' On?</h1>
             <span>Find out what you're going to eat tonight. Make a list of interesting foods and have our app randomly suggest one for tonight</span>
-            </div>
-        </center>
-        <div class='row'>
+        </div>
+    </center>
+    <div class='row'>
+        <?php
+        ?>
     </div>
 
 </body>
