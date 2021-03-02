@@ -19,7 +19,7 @@ if (isset($_COOKIE['id'])) {
 <h3 class='navbar-item'>What We Grubbin' On</h3>
 <h3 class='navbar-item'><a href='Food.php'>Food</a></h3>
     <h3 class='navbar-item'><a href='profile.php'>Profile</a></h3>
-<div class='g-signin2'  data-onsuccess='onSignIn' data-redirecturi='https://whatwegrubbinon.com/profile.php'></div>
+<div class='g-signin2'  data-onsuccess='onSignIn'></div>
 </div>";
 }
 ?>
