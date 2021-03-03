@@ -346,7 +346,7 @@ namespace wwgo {
             foreach ($recipes as $recipe) {
 
                 //perform a comparitive function on the item number that was returned
-                if ($recipes['rid'] == $rid and $recipes['id'] == $this->id) {
+                if ($recipe['rid'] == $rid and $recipe['id'] == $this->id) {
                 } else {
                     array_push($new_list, $recipe);
                 }
