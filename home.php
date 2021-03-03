@@ -2,6 +2,7 @@
     <script src="lib/wwgo.js"></script>
     <link href='style/style.css' rel='stylesheet'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='shortcut icon' type='image/png' href='style/wwgologo.png'/>
     <title>WWGO</title>
 </head>
 
