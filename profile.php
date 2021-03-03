@@ -44,7 +44,7 @@ echo $build->header();
                     </div>
                 </div>
                 <div class='bigblock'>
-                    <div class='block'>
+                    <div class='innerblock'>
                         <a href=''>
                             <image class='profile' src='style/burger.jpg'></image>
                             <div class='blockbody'>
@@ -52,7 +52,7 @@ echo $build->header();
                             </div>
                         </a>
                     </div>
-                    <div class='block'>
+                    <div class='innerblock'>
                         <a href=''>
                             <image class='profile' src='style/burger.jpg'></image>
                             <div class='blockbody'>
