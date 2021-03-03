@@ -273,16 +273,15 @@ namespace wwgo {
             if (isset($_COOKIE['id'])) {
                 $header = "<div id='navbar'>
                 <h3 class='navbar-item'><a href='/'>What We Grubbin' On</a></h3>
-                <h3 class='navbar-item'><a href='Food.php'>Food</a></h3>
+                <h3 class='navbar-item'><a href='food.php'>Food</a></h3>
                 <h3 class='navbar-item'><a href='profile.php'>Profile</a></h3>
                 <h3 class='navbar-item' onclick='logout();'><a>Logout</a></h3>
                 </div>";
             } else {
                 $header = "<div id='navbar'>
                 <h3 class='navbar-item'><a href='/'>What We Grubbin' On</a></h3>
-                <h3 class='navbar-item'><a href='Food.php'>Food</a></h3>
+                <h3 class='navbar-item'><a href='food.php'>Food</a></h3>
                 <h3 class='navbar-item'><a href='profile.php'>Profile</a></h3>
-                <h3 class='navbar-item'><a href='authorize.php'>Login with Google</a></h3>
                 </div>";
             }
             return $header;
