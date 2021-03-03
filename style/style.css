@@ -14,7 +14,7 @@ div {
     overflow-wrap: normal;
 }
 
-button {
+.recipe-button {
     background: #3bd6a2;
     color: white;
     font-size: 20px;
