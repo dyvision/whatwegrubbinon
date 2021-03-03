@@ -35,6 +35,7 @@ echo $build->header();
 <body>
     <?php echo $header; ?>
     <div class='banner' style="background:url(style/profile.jpg);display: table;overflow: hidden;">
+    <span style='background:transparent' class='spacer'></span>
         <div style="display:table-cell;vertical-align: middle;">
             <div style="width:100%;padding:0 3%;">
                 <div class='block'>
