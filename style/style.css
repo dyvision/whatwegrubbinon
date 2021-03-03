@@ -110,12 +110,6 @@ a:focus {
   background: url("egg.jpg");
   color: white;
 }
-.banner-h1 {
-  font-size: 72px;
-}
-.banner-h3 {
-  font-size: 30px;
-}
 
 .banner-title {
   padding: 6% 0;
@@ -130,5 +124,13 @@ h1 {
   }
   .banner-h1 {
     font-size: 40px;
+  }
+}
+@media screen {
+  .banner-h3 {
+    font-size: 30px;
+  }
+  .banner-h1 {
+    font-size: 72px;
   }
 }
