@@ -62,8 +62,9 @@ a:focus {
     object-fit: cover;
 }
 
-.songlist {
+.blockbody {
     padding: 10px;
+    background: #f5f5f5;
 }
 
 #sidebar {

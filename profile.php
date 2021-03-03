@@ -38,7 +38,7 @@ echo $build->header();
             <div style="padding:0 3%;#position: relative; #top: -50%">
                 <div class='block'>
                     <image class='profile' src=<?php echo "'" . $profile['image'] . "'"; ?>></image>
-                    <div class='songlist'>
+                    <div class='blockbody'>
                         <h3><?php echo $profile['email'] ?></h3>
                         <h3><?php echo $profile['fullname'] ?></h3>
                     </div>
