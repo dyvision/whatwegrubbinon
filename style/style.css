@@ -148,6 +148,7 @@ div::-webkit-scrollbar {
     left: 0;
     overflow-y: hidden;
     transition: ease 900ms;
+    height: 80px;
 }
 
 .navbar-item {
