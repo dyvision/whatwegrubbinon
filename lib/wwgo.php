@@ -13,7 +13,7 @@ namespace wwgo {
         'https%3A//www.googleapis.com/auth/userinfo.profile',
         'openid'
     ];
-    const food_db_path = '';
+    const food_db_path = '/var/www/html/db/whatwegrubbinon/recipes.json';
     const user_db_path = '/var/www/html/db/whatwegrubbinon/users.json';
 
     class auth
@@ -28,7 +28,7 @@ namespace wwgo {
                 'scope=' . implode(' ', scopes),
                 'response_type=code',
                 'access_type=offline',
-                'redirect_uri=https://' . main_url . '/'.redir_page,
+                'redirect_uri=https://' . main_url . '/' . redir_page,
                 'client_id=' . client_id
             ];
 
@@ -46,7 +46,7 @@ namespace wwgo {
                 $params = [
                     "code=$code",
                     "grant_type=$type",
-                    'redirect_uri=https://' . main_url . '/'.redir_page,
+                    'redirect_uri=https://' . main_url . '/' . redir_page,
                     'client_id=' . client_id,
                     'client_secret=' . client_secret
                 ];
@@ -244,7 +244,8 @@ namespace wwgo {
             setcookie('guid', $this->guid, 0, '/');
             setcookie('refresh_token', $this->refresh_token, 0, '/');
         }
-        function logout(){
+        function logout()
+        {
             setcookie('id', null, 0, '/');
             setcookie('guid', null, 0, '/');
             setcookie('refresh_token', null, 0, '/');
@@ -252,8 +253,92 @@ namespace wwgo {
     }
     class food
     {
-        function __construct()
+        public $rid;
+        public $name;
+        public $image;
+        public $url;
+        protected $id;
+
+        function __construct($id)
         {
+            $this->id = $id;
+            return;
+        }
+        function get($rid = null)
+        {
+            if ($rid != null) {
+                //get array
+                $recipes = json_decode(file_get_contents(food_db_path), true);
+
+                //search using main identifier
+                $recipe = array_search($rid, array_column($recipes, 'rid'));
+
+                //perform a comparitive function on the item number that was returned
+                if ($recipes[$recipe]['rid'] == $rid and $recipes[$recipe]['id'] == $this->id) {
+                    $this->rid = $recipes[$recipe]['rid'];
+                    $this->name = $recipes[$recipe]['name'];
+                    $this->image = $recipes[$recipe]['image'];
+                    $this->url = $recipes[$recipe]['url'];
+                } else {
+                    $this->name = 'Not Found';
+                }
+                return json_encode($this);
+            } else {
+                //get array
+                $recipes = json_decode(file_get_contents(food_db_path), true);
+
+                $output = [];
+
+                foreach ($recipes as $recipe) {
+                    if ($recipe['id'] == $this->id) {
+                        array_push($output, $recipe);
+                    }
+                }
+                return json_encode($output);
+            }
+        }
+        function create($name, $image, $url)
+        {
+            //get array
+            $recipes = json_decode(file_get_contents(food_db_path), true);
+
+            $this->rid = uniqid();
+            $this->name = $name;
+            $this->image = $image;
+            $this->url = $url;
+
+            $recipe['rid'] = uniqid();
+            $recipe['name'] = $name;
+            $recipe['image'] = $image;
+            $recipe['url'] = $url;
+            $recipe['id'] = $this->id;
+
+            array_push($recipes, $recipe);
+
+            $file = fopen(food_db_path, 'w');
+            fwrite($file, json_encode($recipes));
+            fclose($file);
+        }
+        function delete($rid)
+        {
+            //get array
+            $recipes = json_decode(file_get_contents(food_db_path), true);
+
+            //search using main identifier
+            $recipe = array_search($rid, array_column($recipes, 'rid'));
+
+            //perform a comparitive function on the item number that was returned
+            if ($recipes[$recipe]['rid'] == $rid and $recipes[$recipe]['id'] == $this->id) {
+                unset($recipes[$recipe]);
+
+                $file = fopen(food_db_path, 'w');
+                fwrite($file, json_encode($recipes));
+                fclose($file);
+                $result['message'] = $rid . ' Deleted';
+            } else {
+                $result['message'] = 'Not Found';
+            }
+            return json_encode($result);
         }
     }
     class tag
