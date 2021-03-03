@@ -1,3 +1,13 @@
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        ;
+    }
+}
+
 div {
     display: inline-block;
     overflow-wrap: normal;
@@ -104,6 +114,7 @@ a:focus {
 }
 
 .banner {
+    opacity: 0;
     height: 100%;
     width: 100%;
     background-size: cover;
@@ -111,6 +122,7 @@ a:focus {
     background: url("egg.jpg");
     color: white;
     transition: ease 300ms;
+    animation: fade 300ms forwards;
 }
 
 .banner-title {
