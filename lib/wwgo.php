@@ -272,14 +272,14 @@ namespace wwgo {
         {
             if (isset($_COOKIE['id'])) {
                 $header = "<div id='navbar'>
-                <a class='navbar-item' href='/'><h3 style='margin:0;color: rgb(178, 255, 175);'>WW</h3><h3>GO</h3></a>
+                <a class='navbar-item' href='/'><h3 style='margin:0;color: rgb(178, 255, 175);'>WW</h3><h3 style='margin:0;'>GO</h3></a>
                 <h3 class='navbar-item'><a href='food.php'>Food</a></h3>
                 <h3 class='navbar-item'><a href='profile.php'>Profile</a></h3>
                 <h3 class='navbar-item' onclick='logout();'><a>Logout</a></h3>
                 </div>";
             } else {
                 $header = "<div id='navbar'>
-                <a class='navbar-item' href='/'><h3 style='margin:0;color: rgb(178, 255, 175);'>WW</h3><h3>GO</h3></a>
+                <a class='navbar-item' href='/'><h3 style='margin:0;color: rgb(178, 255, 175);'>WW</h3><h3 style='margin:0;'>GO</h3></a>
                 <h3 class='navbar-item'><a href='authorize.php'>Login with Google</a></h3>
                 </div>";
             }
