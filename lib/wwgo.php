@@ -244,6 +244,12 @@ namespace wwgo {
             setcookie('guid', $this->guid, 0, '/');
             setcookie('refresh_token', $this->refresh_token, 0, '/');
         }
+        function logout(){
+            setcookie('id', null, 0, '/');
+            setcookie('guid', null, 0, '/');
+            setcookie('refresh_token', null, 0, '/');
+            header('location: /');
+        }
     }
     class food
     {
@@ -267,18 +273,18 @@ namespace wwgo {
         {
             if (isset($_COOKIE['id'])) {
                 $header = "<div id='navbar'>
-                <h3 class='navbar-item'>What We Grubbin' On</h3>
+                <h3 class='navbar-item'><a href='/'>What We Grubbin' On</a></h3>
                 <h3 class='navbar-item'><a href='Food.php'>Food</a></h3>
                 <h3 class='navbar-item'><a href='profile.php'>Profile</a></h3>
                 <h3 class='navbar-item' onclick='logout();'><a>Logout</a></h3>
                 </div>";
             } else {
                 $header = "<div id='navbar'>
-            <h3 class='navbar-item'>What We Grubbin' On</h3>
-            <h3 class='navbar-item'><a href='Food.php'>Food</a></h3>
+                <h3 class='navbar-item'><a href='/'>What We Grubbin' On</a></h3>
+                <h3 class='navbar-item'><a href='Food.php'>Food</a></h3>
                 <h3 class='navbar-item'><a href='profile.php'>Profile</a></h3>
-            <h3 class='navbar-item'><a href='authorize.php'>Login with Google</a></h3>
-            </div>";
+                <h3 class='navbar-item'><a href='authorize.php'>Login with Google</a></h3>
+                </div>";
             }
             return $header;
         }

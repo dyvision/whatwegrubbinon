@@ -5,31 +5,16 @@ use wwgo\auth;
 use wwgo\user;
 use wwgo\visual;
 
-if (isset($_COOKIE['id']) and isset($_COOKIE['guid'])) {
-
+if (isset($_COOKIE['id']) and isset($_COOKIE['guid']) and isset($_COOKIE['refresh_token'])) {
     $auth = new auth();
-    $token = json_decode($auth->authenticate($_GET['code'], 'authorization_code'), true);
+    $token = json_decode($auth->authenticate($COOKIE['refresh_token'], 'refresh_token'), true);
     $verify = json_decode($auth->verify($token['access_token']), true);
     $user = new user($token['access_token'], $_COOKIE['id'], $_COOKIE['guid'], null);
-
 } else {
-
-    $auth = new auth();
-    $token = json_decode($auth->authenticate($_GET['code'], 'authorization_code'), true);
-    $verify = json_decode($auth->verify($token['access_token']), true);
-    if ($verify['guid'] != '') {
-        $user = new user($token['access_token'], $verify['id'], $verify['guid'], null);
-        $user->pull();
-    } else {
-        $user = new user($token['access_token'], $verify['id'], null, $token['refresh_token']);
-        $user->create();
-        $user->pull();
-    }
-    $user->login();
-
+    header('location: authorize.php');
 }
 
-$profile = json_decode($user->get(),true);
+$profile = json_decode($user->get(), true);
 
 ?>
 
@@ -40,7 +25,7 @@ $profile = json_decode($user->get(),true);
 </head>
 
 <?php
-$build = New visual();
+$build = new visual();
 echo $build->header();
 ?>
 
@@ -48,12 +33,10 @@ echo $build->header();
     <?php echo $header; ?>
     <span class='spacer'></span>
     <div class='row'>
-        <image src=<?php echo "'".$profile['image']."'";?>></image>
+        <image src=<?php echo "'" . $profile['image'] . "'"; ?>></image>
         <h3><?php echo $profile['email'] ?></h3>
         <h3><?php echo $profile['fullname'] ?></h3>
     </div>
 
 </body>
-
-<?php
 
