@@ -11,12 +11,11 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['guid'])) {
     $verify = json_decode($auth->verify($token['access_token']), true);
     if ($verify['guid'] != '') {
         $user = new user($token['access_token'], $verify['id'], $verify['guid'], null);
-        $user->pull();
     } else {
         $user = new user($token['access_token'], $verify['id'], null, $token['refresh_token']);
         $user->create();
-        $user->pull();
     }
+    $user->pull();
     $user->login();
 
   
