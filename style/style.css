@@ -97,7 +97,8 @@ a:focus {
     transition: ease 300ms;
     min-width: 300px;
     max-width: 300px;
-    max-height: 500px;
+    max-height: 420px;
+    min-height: 420px;
     vertical-align: top;
     text-align: left;
     background: #f5f5f5;
