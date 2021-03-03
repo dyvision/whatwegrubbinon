@@ -21,7 +21,9 @@ use wwgo\visual;
         <div style="#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;">
             <div style="padding:0 3%;#position: relative; #top: -50%">
                 <h1 style='font-size:72px'>What We Grubbin' On?</h1>
-                <h3>Find out what you're going to eat tonight. Make a list of interesting foods and have our app randomly suggest one for tonight</h3>
+                <h3 style='font-size:30px'>Find out what you're going to eat tonight.</h3>
+                <h3 style='font-size:30px'>Add recipes.</h3>
+                <h3 style='font-size:30px'>Get recommendations.</h3>
             </div>
         </div>
     </div>
