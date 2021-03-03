@@ -119,6 +119,22 @@ namespace wwgo {
             }
             return json_encode($result);
         }
+        function api_verify($apikey, $apisecret)
+        {
+            //get array
+            $users = json_decode(file_get_contents(user_db_path), true);
+
+            //search using main identifier
+            $me = array_search($apikey, array_column($users, 'id'));
+
+            //perform a comparitive function on the item number that was returned
+            if ($users[$me]['id'] == $apikey and $users[$me]['guid'] == $apisecret) {
+            } else {
+                header('HTTP/1.1 401 Unauthorized');
+                header('WWW-Authenticate: Basic realm="Enter APIKEY and APISECRET"');
+                exit("Access Denied: User not found.");
+            }
+        }
     }
     class user
     {
@@ -127,8 +143,8 @@ namespace wwgo {
         public $firstname;
         public $lastname;
         public $image;
-        protected $id;
-        protected $guid;
+        public $id;
+        public $guid;
         protected $refresh_token;
         protected $access_token;
 

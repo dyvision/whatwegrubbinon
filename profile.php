@@ -54,6 +54,8 @@ echo $build->header();
                             <button>Update Frequency</button>
                         </form>
                         <button class='recipe-button'>Add A Recipe</button>
+                        <span style='color:grey'>API Key: <?php echo $profile['id'] ?></span>
+                        <span style='color:grey'>API Secret:<?php echo $profile['guid'] ?></span>
 
                     </div>
                 </div>
