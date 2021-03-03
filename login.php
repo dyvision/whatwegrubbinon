@@ -20,4 +20,4 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['guid'])) {
 
   
 }
-header('location: profile.php');
+header('location: profile');

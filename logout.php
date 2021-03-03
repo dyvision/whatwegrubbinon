@@ -12,10 +12,10 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['guid']) and isset($_COOKIE['refres
     if ($verify['guid'] != '') {
         $user = new user($token['access_token'], $verify['id'], $verify['guid'], null);
         $user->logout();
-        header('location: home.php');
+        header('location: home');
     } else {
-        header('location: home.php');
+        header('location: home');
     }
 } else {
-    header('location: home.php');
+    header('location: home');
 }
