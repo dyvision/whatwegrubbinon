@@ -217,4 +217,7 @@ h1 {
         min-width: 300px;
         max-width: 300px;
     }
+    .banner {
+        overflow-y: scroll;
+    }
 }
