@@ -1,120 +1,134 @@
 div {
-    display: inline-block;
-    overflow-wrap: normal;
+  display: inline-block;
+  overflow-wrap: normal;
 }
 
 body {
-    background: linear-gradient(2deg, #fafafa, #f5f5f5);
-    color: rgb(0, 0, 0);
-    font-family: helvetica;
-    margin: 0%;
-    vertical-align: top;
+  background: linear-gradient(2deg, #fafafa, #f5f5f5);
+  color: rgb(0, 0, 0);
+  font-family: helvetica;
+  margin: 0%;
+  vertical-align: top;
 }
 
 a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    transition: ease 300ms;
-    display: block;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: ease 300ms;
+  display: block;
 }
 
 a:hover {
-    color: rgb(178, 255, 175);
-    transition: ease 300ms;
-    cursor: pointer;
+  color: rgb(178, 255, 175);
+  transition: ease 300ms;
+  cursor: pointer;
 }
 
 a:focus {
-    color: rgb(224, 224, 224);
-    transition: ease 300ms;
+  color: rgb(224, 224, 224);
+  transition: ease 300ms;
 }
 
 .block {
-    padding: 0%;
-    box-shadow: 2px 4px 8px black;
-    margin: 1%;
-    transition: ease 300ms;
-    min-width: 275px;
-    max-width: 300px;
-    vertical-align: top;
-    text-align: left;
+  padding: 0%;
+  box-shadow: 2px 4px 8px black;
+  margin: 1%;
+  transition: ease 300ms;
+  min-width: 275px;
+  max-width: 300px;
+  vertical-align: top;
+  text-align: left;
 }
 
 .block:hover {
-    box-shadow: 2px 4px 8px rgb(163, 163, 163);
-    transition: ease 300ms;
+  box-shadow: 2px 4px 8px rgb(163, 163, 163);
+  transition: ease 300ms;
 }
 
 .profile {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
 }
 
 .songlist {
-    padding: 10px;
+  padding: 10px;
 }
 
 #sidebar {
-    width: 300px;
-    height: 100%;
-    background-color: rgb(134, 134, 134);
-    box-shadow: 2px 4px 8px black;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    transition: ease 300ms;
-    transform: translate(-100%);
+  width: 300px;
+  height: 100%;
+  background-color: rgb(134, 134, 134);
+  box-shadow: 2px 4px 8px black;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: ease 300ms;
+  transform: translate(-100%);
 }
 
 #navbar {
-    height: 80px;
-    width: 100%;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0px 2px 9px #0000008a;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-y: hidden;
-    transition: ease 300ms;
+  height: 80px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 2px 9px #0000008a;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-y: hidden;
+  transition: ease 300ms;
 }
 
 .navbar-item {
-    float:left;
-    margin: 2%;
+  float: left;
+  margin: 2%;
 }
-.navbar-item-right{
-    margin: 2%;
-    float:right;
+.navbar-item-right {
+  margin: 2%;
+  float: right;
 }
 
 .spacer {
-    height: 80px;
-    display: block;
+  height: 80px;
+  display: block;
 }
 
 .row {
-    padding-left: 5%;
-    padding-right: 5%;
-    overflow-wrap: normal;
+  padding-left: 5%;
+  padding-right: 5%;
+  overflow-wrap: normal;
 }
 
 .banner {
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-position: top;
-    background: url('egg.jpg');
-    color: white;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: top;
+  background: url("egg.jpg");
+  color: white;
+}
+.banner-h1 {
+  font-size: 72px;
+}
+.banner-h3 {
+  font-size: 30px;
 }
 
 .banner-title {
-    padding: 6% 0;
+  padding: 6% 0;
 }
 
 h1 {
-    margin: 0;
+  margin: 0;
+}
+@media handheld {
+  .banner-h3 {
+    font-size: 20px;
+  }
+  .banner-h1 {
+    font-size: 40px;
+  }
 }
