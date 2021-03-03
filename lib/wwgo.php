@@ -13,7 +13,7 @@ namespace wwgo {
         'openid'
     ];
     const food_db_path = '';
-    const user_db_path = '';
+    const user_db_path = '/var/www/html/db/whatwegrubbinon/users.json';
 
     class auth
     {
@@ -100,7 +100,24 @@ namespace wwgo {
             $url = 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json';
 
             //execute
-            return file_get_contents($url, false, $context);
+            $pull = json_decode(file_get_contents($url, false, $context), true);
+
+            //open user db
+            $users = json_decode(file_get_contents(user_db_path), true);
+
+            //check to see if user exists
+            $me = array_search($pull['id'], array_column($users, 'id'));
+
+            if ($users[$me]['id'] == $pull['id']) {
+                $result['id'] = $pull['id'];
+                $result['guid'] = $users[$me]['guid'];
+                $result['message'] = 'User found';
+            } else {
+                $result['id'] = $pull['id'];
+                $result['guid'] = '';
+                $result['message'] = 'User not found';
+            }
+            return json_encode($result);
         }
     }
     class user
@@ -114,7 +131,7 @@ namespace wwgo {
         protected $guid;
         protected $refresh_token;
 
-        function __construct($id = null, $guid = null)
+        function __construct($id, $guid = null, $refresh_token = null)
         {
             //get array
             $users = json_decode(file_get_contents(user_db_path), true);
@@ -140,23 +157,15 @@ namespace wwgo {
                 $result['guid'] = $users[$me]['guid'];
             } else {
 
-                //create a new user
-                $new_user['id'] = $id;
-                $new_user['guid'] = uniqid();
+                //create new user
+                $this->refresh_token = $refresh_token;
+                $this->id = $id;
+                $this->guid = uniqid();
 
 
                 //generate response
-                $result['message'] = 'User not found, created new account';
-                $result['guid'] = $new_user['guid'];
-
-
-                //push into users array
-                array_push($users, $new_user);
-
-                //write the json version into the db
-                $file = fopen(user_db_path, 'w');
-                fwrite($file, json_encode($users));
-                fclose($file);
+                $result['message'] = 'User not found';
+                $result['guid'] = $this->guid;
             }
 
             //return the user's data
@@ -182,6 +191,21 @@ namespace wwgo {
             $pull = json_decode(file_get_contents($url, false, $context), true);
 
             return json_encode($pull);
+        }
+        function create()
+        {
+            //create array for json
+            $new_user['id'] = $this->id;
+            $new_user['guid'] = $this->guid;
+            $new_user['refresh_token'] = $this->refresh_token;
+
+            //push into users array
+            array_push($users, $new_user);
+
+            //write the json version into the db
+            $file = fopen(user_db_path, 'w');
+            fwrite($file, json_encode($users));
+            fclose($file);
         }
     }
     class food
