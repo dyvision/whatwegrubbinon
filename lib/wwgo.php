@@ -4,6 +4,7 @@ namespace wwgo {
 
     //list of constants. making changes here will reflect everywhere
     const main_url = 'whatwegrubbinon.com';
+    const redir_page = 'login.php';
     const client_id = '634372968316-6p6nf6j795lbja68pd6q35c74pqjb55s.apps.googleusercontent.com';
     const client_secret = 'yCe3n_MnFwWryOMvyvr_lTBx';
     //be sure to implode scopes
@@ -27,7 +28,7 @@ namespace wwgo {
                 'scope=' . implode(' ', scopes),
                 'response_type=code',
                 'access_type=offline',
-                'redirect_uri=https://' . main_url . '/profile.php',
+                'redirect_uri=https://' . main_url . '/'.redir_page,
                 'client_id=' . client_id
             ];
 
