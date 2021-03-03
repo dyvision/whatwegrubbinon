@@ -43,6 +43,16 @@ echo $build->header();
                         <h3><?php echo $profile['fullname'] ?></h3>
                     </div>
                 </div>
+                <div class='bigblock'>
+                    <div class='block'>
+                        <a href=''>
+                            <image class='profile' src='style/burger.jpg'></image>
+                            <div class='blockbody'>
+                                <h3>this is a test recipe</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
