@@ -70,7 +70,6 @@ a:focus {
 }
 
 #navbar {
-  height: 80px;
   width: 100%;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 2px 9px #0000008a;
@@ -87,6 +86,7 @@ a:focus {
   margin: 2%;
 }
 .navbar-item-right {
+  font-size: 20px;
   margin: 2%;
   float: right;
 }
