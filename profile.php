@@ -35,7 +35,7 @@ echo $build->header();
     <?php echo $header; ?>
     <div class='banner' style="background:url(style/burger.jpg);display: table; #position: relative; overflow: hidden;">
         <div style="#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;">
-            <div style="padding:0 3%;#position: relative; #top: -50%">
+            <div style="width:100%;padding:0 3%;#position: relative; #top: -50%">
                 <div class='block'>
                     <image class='profile' src=<?php echo "'" . $profile['image'] . "'"; ?>></image>
                     <div class='blockbody'>
