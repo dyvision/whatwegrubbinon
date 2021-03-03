@@ -102,7 +102,7 @@ a:focus {
     height: 100%;
     width: 100%;
     background-size: auto;
-    background-position: left;
+    background-position: top;
     background: url('banner3.jpg');
     color: white;
 }
