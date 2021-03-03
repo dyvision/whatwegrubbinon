@@ -213,6 +213,8 @@ h1 {
     .bigblock {
         min-width: 100%;
         max-width: 100%;
+        overflow-y: visible;
+        max-height: 100%;
     }
     .block {
         min-width: 300px;
