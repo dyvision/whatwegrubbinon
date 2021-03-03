@@ -41,6 +41,7 @@ a:focus {
 }
 
 .block {
+    display: inline-block;
     padding: 0%;
     box-shadow: 2px 4px 8px black;
     margin: 1%;
