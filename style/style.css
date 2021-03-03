@@ -49,6 +49,7 @@ a:focus {
     max-width: 300px;
     vertical-align: top;
     text-align: left;
+    background: #f5f5f5;
 }
 
 .block:hover {
@@ -64,7 +65,6 @@ a:focus {
 
 .blockbody {
     padding: 10px;
-    background: #f5f5f5;
 }
 
 #sidebar {
