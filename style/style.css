@@ -118,19 +118,19 @@ a:focus {
 h1 {
   margin: 0;
 }
-@media handheld {
-  .banner-h3 {
-    font-size: 20px;
-  }
-  .banner-h1 {
-    font-size: 40px;
-  }
-}
-@media screen {
+@media (min-width: 960px) {
   .banner-h3 {
     font-size: 30px;
   }
   .banner-h1 {
     font-size: 72px;
+  }
+}
+@media (max-width: 960px) {
+  .banner-h3 {
+    font-size: 20px;
+  }
+  .banner-h1 {
+    font-size: 40px;
   }
 }
