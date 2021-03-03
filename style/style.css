@@ -29,6 +29,7 @@ div {
 .recipe-button:hover {
     transition: ease 300ms;
     box-shadow: 0px 4px 8px #eeeeee2e;
+    cursor: pointer;
 }
 
 body {
