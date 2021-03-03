@@ -16,13 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $post = $_POST;
     }
     $food = new food($apikey);
-    $food->create($post['name'], $post['image'], $post['url']);
+    print_r($food->create($post['name'], $post['image'], $post['url']));
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $food = new food($apikey);
-    $food->get($_GET['rid']);
+    print_r($food->get($_GET['rid']));
 } elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     $food = new food($apikey);
-    $food->delete($_GET['rid']);
+    print_r($food->delete($_GET['rid']));
 } else {
     header('HTTP/1.1 403 Not Supported');
     exit("Method not supported");
