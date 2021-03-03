@@ -340,22 +340,21 @@ namespace wwgo {
         {
             //get array
             $recipes = json_decode(file_get_contents(food_db_path), true);
+            $new_list = [];
 
             //search using main identifier
-            $recipe = array_search($rid, array_column($recipes, 'rid'));
+            foreach ($recipes as $recipe) {
 
-            //perform a comparitive function on the item number that was returned
-            if ($recipes[$recipe]['rid'] == $rid and $recipes[$recipe]['id'] == $this->id) {
-                unset($recipes[$recipe]);
-
-                $file = fopen(food_db_path, 'w');
-                fwrite($file, json_encode($recipes));
-                fclose($file);
-                $result['message'] = $rid . ' Deleted';
-            } else {
-                $result['message'] = 'Not Found';
+                //perform a comparitive function on the item number that was returned
+                if ($recipes['rid'] == $rid and $recipes['id'] == $this->id) {
+                } else {
+                    array_push($new_list, $recipe);
+                }
             }
-            return json_encode($result);
+            $file = fopen(food_db_path, 'w');
+            fwrite($file, json_encode($new_list));
+            fclose($file);
+            return json_encode($result['message'] = $rid . " Deleted");
         }
     }
     class tag
