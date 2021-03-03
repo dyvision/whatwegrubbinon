@@ -11,5 +11,6 @@ if ($verify['guid'] != '') {
     $user = new user($verify['id'], $_COOKIE['guid']);
 } else {
     $user = new user($verify['id'],null,$token['refresh_token']);
+    $user->create();
 }
 print_r($user->get());
