@@ -13,6 +13,9 @@ div {
     display: inline-block;
     overflow-wrap: normal;
 }
+input{
+    margin-bottom: 5px;
+}
 
 .recipe-button {
     text-decoration: none;
