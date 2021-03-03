@@ -36,7 +36,6 @@ echo $build->header();
     <?php echo $header; ?>
     <div class='banner' style="background:url(style/profile.jpg);">
     <span style='background:transparent' class='spacer'></span>
-        <div>
             <div style="width:100%;padding:0 3%;">
                 <div class='block'>
                     <image class='profile' src=<?php echo "'" . $profile['image'] . "'"; ?>></image>
@@ -78,7 +77,6 @@ echo $build->header();
                     ?>
                 </div>
             </div>
-        </div>
     </div>
 
 </body>
