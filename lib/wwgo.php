@@ -101,7 +101,7 @@ namespace wwgo {
 
             //execute
             $pull = json_decode(file_get_contents($url, false, $context), true);
-            
+
             //open user db
             $users = json_decode(file_get_contents(user_db_path), true);
 
@@ -188,7 +188,7 @@ namespace wwgo {
 
             //user info api
             $url = 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json';
-
+            
             //execute
             $pull = json_decode(file_get_contents($url, false, $context), true);
 
