@@ -2,7 +2,6 @@
 include('../lib/wwgo.php');
 
 use wwgo\auth;
-use wwgo\user;
 use wwgo\food;
 
 $apikey = $_SERVER['PHP_AUTH_USER'];
