@@ -33,8 +33,7 @@ echo $build->header();
 
 <body>
     <?php echo $header; ?>
-    <span class='spacer'></span>
-    <div class='row'>
+    <div class='banner' style='background:url(style/burger.jpg)'>
         <image src=<?php echo "'" . $profile['image'] . "'"; ?>></image>
         <h3><?php echo $profile['email'] ?></h3>
         <h3><?php echo $profile['fullname'] ?></h3>
