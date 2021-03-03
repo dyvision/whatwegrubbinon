@@ -175,7 +175,7 @@ namespace wwgo {
         }
         function get()
         {
-            return $this;
+            return json_encode($this);
         }
         function pull()
         {
