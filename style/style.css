@@ -66,8 +66,8 @@ a:focus {
     transition: ease 300ms;
     min-width: 300px;
     max-width: 300px;
-    max-height: 60%;
-    min-height: 60%;
+    max-height: 80%;
+    min-height: 80%;
     vertical-align: top;
     text-align: left;
     background: #f5f5f5;
@@ -80,8 +80,8 @@ a:focus {
     transition: ease 300ms;
     min-width: 70%;
     max-width: 70%;
-    max-height: 60%;
-    min-height: 60%;
+    max-height: 80%;
+    min-height: 80%;
     vertical-align: top;
     text-align: left;
     background: transparent;
