@@ -13,7 +13,7 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['guid']) and isset($_COOKIE['refres
 } else {
     header('location: authorize.php');
 }
-
+$user->pull();
 $profile = json_decode($user->get(), true);
 
 ?>
