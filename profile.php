@@ -8,9 +8,9 @@ $auth = new auth();
 $token = json_decode($auth->authenticate($_GET['code'], 'authorization_code'), true);
 $verify = json_decode($auth->verify($token['access_token']), true);
 if ($verify['guid'] != '') {
-    $user = new user($verify['id'], $_COOKIE['guid']);
+    $user = new user($token['access_token'],$verify['id'], $_COOKIE['guid'],null);
 } else {
-    $user = new user($verify['id'],null,$token['refresh_token']);
+    $user = new user($token['access_token'],$verify['id'],null,$token['refresh_token']);
     $user->create();
 }
 print_r($user->get());

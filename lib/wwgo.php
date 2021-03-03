@@ -130,8 +130,9 @@ namespace wwgo {
         protected $id;
         protected $guid;
         protected $refresh_token;
+        protected $access_token;
 
-        function __construct($id, $guid = null, $refresh_token = null)
+        function __construct($token,$id, $guid = null, $refresh_token = null)
         {
             //get array
             $users = json_decode(file_get_contents(user_db_path), true);
@@ -151,6 +152,7 @@ namespace wwgo {
                 $this->firstname = $users[$me]['firstname'];
                 $this->lastname = $users[$me]['lastname'];
                 $this->image = $users[$me]['image'];
+                $this->access_token = $token;
 
                 //build response
                 $result['message'] = 'User found, building class properties';
@@ -175,12 +177,12 @@ namespace wwgo {
         {
             return $this;
         }
-        function pull($token)
+        function pull()
         {
             //create auth header
             $context = stream_context_create([
                 "http" => [
-                    "header" => "Authorization: Bearer $token"
+                    "header" => "Authorization: Bearer $this->access_token"
                 ]
             ]);
 
@@ -194,6 +196,9 @@ namespace wwgo {
         }
         function create()
         {
+            //get user db
+            $users = json_decode(file_get_contents(user_db_path), true);
+
             //create array for json
             $new_user['id'] = $this->id;
             $new_user['guid'] = $this->guid;
