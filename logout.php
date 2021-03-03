@@ -13,8 +13,8 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['guid']) and isset($_COOKIE['refres
         $user = new user($token['access_token'], $verify['id'], $verify['guid'], null);
         $user->logout();
     } else {
-        header('authorize.php');
+        header('location: authorize.php');
     }
 } else {
-    header('authorize.php');
+    header('location: authorize.php');
 }
