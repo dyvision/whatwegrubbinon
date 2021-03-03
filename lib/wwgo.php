@@ -101,7 +101,7 @@ namespace wwgo {
 
             //execute
             $pull = json_decode(file_get_contents($url, false, $context), true);
-                    print_r($pull);
+            
             //open user db
             $users = json_decode(file_get_contents(user_db_path), true);
 
@@ -201,16 +201,16 @@ namespace wwgo {
             //perform a comparitive function on the item number that was returned
             if ($users[$me]['id'] == $this->id and $users[$me]['guid'] == $this->guid) {
                 $this->email = $pull['email'];
-                $this->fullname = $pull['fullname'];
-                $this->firstname = $pull['firstname'];
-                $this->lastname = $pull['lastname'];
-                $this->image = $pull['image'];
+                $this->fullname = $pull['name'];
+                $this->firstname = $pull['given_name'];
+                $this->lastname = $pull['family_name'];
+                $this->image = $pull['picture'];
 
                 $users[$me]['email'] = $pull['email'];
-                $users[$me]['fullname'] = $pull['fullname'];
-                $users[$me]['firstname'] = $pull['firstname'];
-                $users[$me]['lastname'] = $pull['lastname'];
-                $users[$me]['image'] = $pull['image'];
+                $users[$me]['fullname'] = $pull['name'];
+                $users[$me]['firstname'] = $pull['given_name'];
+                $users[$me]['lastname'] = $pull['family_name'];
+                $users[$me]['image'] = $pull['picture'];
 
                 //write the json version into the db
                 $file = fopen(user_db_path, 'w');
