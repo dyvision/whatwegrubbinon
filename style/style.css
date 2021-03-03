@@ -60,8 +60,8 @@ a:focus {
     box-shadow: 2px 4px 8px black;
     margin: 1%;
     transition: ease 300ms;
-    min-width: 400px;
-    max-width: 900px;
+    min-width: 308px;
+    max-width: 80%;
     max-height: 800px;
     min-height: 800px;
     vertical-align: top;
