@@ -44,6 +44,7 @@ echo $build->header();
                     </div>
                 </div>
                 <div class='bigblock'>
+                    <h1>Recipes</h1>
                     <div class='innerblock'>
                         <a href=''>
                             <image class='profile' src='style/burger.jpg'></image>
