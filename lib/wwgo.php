@@ -101,7 +101,7 @@ namespace wwgo {
 
             //execute
             $pull = json_decode(file_get_contents($url, false, $context), true);
-
+                    print_r($pull);
             //open user db
             $users = json_decode(file_get_contents(user_db_path), true);
 
