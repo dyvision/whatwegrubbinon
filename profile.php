@@ -16,3 +16,4 @@ if ($verify['guid'] != '') {
     $user->pull();
 }
 print_r($user->get());
+$user->login();

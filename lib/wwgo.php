@@ -188,7 +188,7 @@ namespace wwgo {
 
             //user info api
             $url = 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json';
-            
+
             //execute
             $pull = json_decode(file_get_contents($url, false, $context), true);
 
@@ -237,6 +237,11 @@ namespace wwgo {
             $file = fopen(user_db_path, 'w');
             fwrite($file, json_encode($users));
             fclose($file);
+        }
+        function login(){
+            setcookie('id',$this->id,0,'/');
+            setcookie('guid',$this->guid,0,'/');
+            setcookie('refresh_token',$this->refresh_token,0,'/');
         }
     }
     class food
