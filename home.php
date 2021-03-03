@@ -17,7 +17,7 @@ if (isset($_COOKIE['id'])) {
 <h3 class='navbar-item'>What We Grubbin' On</h3>
 <h3 class='navbar-item'><a href='Food.php'>Food</a></h3>
     <h3 class='navbar-item'><a href='profile.php'>Profile</a></h3>
-<h3 class='navbar-item'>Login with Google</h3>
+<h3 class='navbar-item'><a href='profile.php'>Login with Google</a></h3>
 </div>";
 }
 ?>
