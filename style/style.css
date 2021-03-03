@@ -24,6 +24,7 @@ div {
     padding: 10px;
     font-weight: 800;
     transition: ease 300ms;
+    margin-bottom: 5%
 }
 
 .recipe-button:hover {
