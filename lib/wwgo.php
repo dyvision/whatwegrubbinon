@@ -132,7 +132,7 @@ namespace wwgo {
         protected $refresh_token;
         protected $access_token;
 
-        function __construct($token,$id, $guid = null, $refresh_token = null)
+        function __construct($token, $id, $guid = null, $refresh_token = null)
         {
             //get array
             $users = json_decode(file_get_contents(user_db_path), true);
@@ -192,7 +192,33 @@ namespace wwgo {
             //execute
             $pull = json_decode(file_get_contents($url, false, $context), true);
 
-            return json_encode($pull);
+            //get array
+            $users = json_decode(file_get_contents(user_db_path), true);
+
+            //search using main identifier
+            $me = array_search($this->id, array_column($users, 'id'));
+
+            //perform a comparitive function on the item number that was returned
+            if ($users[$me]['id'] == $this->id and $users[$me]['guid'] == $this->guid) {
+                $this->email = $pull['email'];
+                $this->fullname = $pull['fullname'];
+                $this->firstname = $pull['firstname'];
+                $this->lastname = $pull['lastname'];
+                $this->image = $pull['image'];
+
+                $users[$me]['email'] = $pull['email'];
+                $users[$me]['fullname'] = $pull['fullname'];
+                $users[$me]['firstname'] = $pull['firstname'];
+                $users[$me]['lastname'] = $pull['lastname'];
+                $users[$me]['image'] = $pull['image'];
+
+                //write the json version into the db
+                $file = fopen(user_db_path, 'w');
+                fwrite($file, json_encode($users));
+                fclose($file);
+            }
+
+            return;
         }
         function create()
         {
