@@ -83,8 +83,12 @@ a:focus {
 }
 
 .navbar-item {
-    display: inline-block;
+    float:left;
     margin: 2%;
+}
+.navbar-item-left{
+    margin: 2%;
+    float:right;
 }
 
 .spacer {
