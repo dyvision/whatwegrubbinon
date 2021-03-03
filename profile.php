@@ -52,7 +52,13 @@ echo $build->header();
                             </select>
                             <button>Update Frequency</button>
                         </form>
-                        <button class='recipe-button'>Add A Recipe</button></br>
+                        <form>
+                            <input type='text' name='name' placeholder='Recipe Name'>
+                            <input type='text' name='image' placeholder='Recipe Image'>
+                            <input type='text' name='url' placeholder='Recipe URL'>
+                            <button class='recipe-button'>Add A Recipe</button></br>
+                        </form>
+                        
                         <span style='color:grey'>API Key: <?php echo $profile['id'] ?></span></br>
                         <span style='color:grey'>API Secret:<?php echo $profile['guid'] ?></span>
 
