@@ -5,7 +5,7 @@ use wwgo\auth;
 use wwgo\food;
 
 $apikey = $_SERVER['PHP_AUTH_USER'];
-$apisecret = $_SERVER['PHP_AUTH_PW '];
+$apisecret = $_SERVER['PHP_AUTH_PW'];
 
 $auth = new auth();
 $auth->api_verify($apikey, $apisecret);
