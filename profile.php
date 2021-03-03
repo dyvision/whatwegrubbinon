@@ -22,7 +22,7 @@ $profile = json_decode($user->get(), true);
     <script src="lib/wwgo.js"></script>
     <link href='style/style.css' rel='stylesheet'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='shortcut icon' type='image/png' href='style/wwgologo.png'/>
+    <link rel='shortcut icon' type='image/png' href='style/wwgologo.png' />
     <title>WWGO</title>
 </head>
 
@@ -33,11 +33,14 @@ echo $build->header();
 
 <body>
     <?php echo $header; ?>
-    <div class='banner' style='background:url(style/burger.jpg)'>
-        <image src=<?php echo "'" . $profile['image'] . "'"; ?>></image>
-        <h3><?php echo $profile['email'] ?></h3>
-        <h3><?php echo $profile['fullname'] ?></h3>
+    <div class='banner' style="background:url(style/burger.jpg);display: table; #position: relative; overflow: hidden;">
+        <div style="#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;">
+            <div style="padding:0 3%;#position: relative; #top: -50%">
+                <image src=<?php echo "'" . $profile['image'] . "'"; ?>></image>
+                <h3><?php echo $profile['email'] ?></h3>
+                <h3><?php echo $profile['fullname'] ?></h3>
+            </div>
+        </div>
     </div>
 
 </body>
-
