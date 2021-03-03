@@ -238,10 +238,11 @@ namespace wwgo {
             fwrite($file, json_encode($users));
             fclose($file);
         }
-        function login(){
-            setcookie('id',$this->id,0,'/');
-            setcookie('guid',$this->guid,0,'/');
-            setcookie('refresh_token',$this->refresh_token,0,'/');
+        function login()
+        {
+            setcookie('id', $this->id, 0, '/');
+            setcookie('guid', $this->guid, 0, '/');
+            setcookie('refresh_token', $this->refresh_token, 0, '/');
         }
     }
     class food
@@ -254,6 +255,32 @@ namespace wwgo {
     {
         function __construct()
         {
+        }
+    }
+    class visual
+    {
+        function __construct()
+        {
+            return;
+        }
+        function header()
+        {
+            if (isset($_COOKIE['id'])) {
+                $header = "<div id='navbar'>
+                <h3 class='navbar-item'>What We Grubbin' On</h3>
+                <h3 class='navbar-item'><a href='Food.php'>Food</a></h3>
+                <h3 class='navbar-item'><a href='profile.php'>Profile</a></h3>
+                <h3 class='navbar-item' onclick='logout();'><a>Logout</a></h3>
+                </div>";
+            } else {
+                $header = "<div id='navbar'>
+            <h3 class='navbar-item'>What We Grubbin' On</h3>
+            <h3 class='navbar-item'><a href='Food.php'>Food</a></h3>
+                <h3 class='navbar-item'><a href='profile.php'>Profile</a></h3>
+            <h3 class='navbar-item'><a href='authorize.php'>Login with Google</a></h3>
+            </div>";
+            }
+            return $header;
         }
     }
 }

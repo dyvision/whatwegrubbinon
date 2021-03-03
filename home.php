@@ -5,25 +5,16 @@
 </head>
 
 <?php
-if (isset($_COOKIE['id'])) {
-    $header = "<div id='navbar'>
-    <h3 class='navbar-item'>What We Grubbin' On</h3>
-    <h3 class='navbar-item'><a href='Food.php'>Food</a></h3>
-    <h3 class='navbar-item'><a href='profile.php'>Profile</a></h3>
-    <h3 class='navbar-item' onclick='logout();'><a>Logout</a></h3>
-    </div>";
-} else {
-    $header = "<div id='navbar'>
-<h3 class='navbar-item'>What We Grubbin' On</h3>
-<h3 class='navbar-item'><a href='Food.php'>Food</a></h3>
-    <h3 class='navbar-item'><a href='profile.php'>Profile</a></h3>
-<h3 class='navbar-item'><a href='authorize.php'>Login with Google</a></h3>
-</div>";
-}
+include('lib/wwgo.php');
+
+use wwgo\visual;
+
+
 ?>
 
 <body>
-    <?php echo $header; ?>
+    <?php $build = new visual();
+    echo $build->header(); ?>
     <span class='spacer'></span>
 
     <center class='banner'>
