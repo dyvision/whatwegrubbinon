@@ -34,7 +34,7 @@ echo $build->header();
 
 <body>
     <?php echo $header; ?>
-    <div class='banner' style="background:url(style/profile.jpg);overflow: hidden;">
+    <div class='banner' style="background:url(style/profile.jpg);">
     <span style='background:transparent' class='spacer'></span>
         <div>
             <div style="width:100%;padding:0 3%;">

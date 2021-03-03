@@ -183,6 +183,7 @@ div::-webkit-scrollbar {
     color: white;
     transition: ease 300ms;
     animation: fade 300ms forwards;
+    overflow: hidden;
 }
 
 .banner-title {
