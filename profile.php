@@ -34,7 +34,7 @@ echo $build->header();
 
 <body>
     <?php echo $header; ?>
-    <div class='banner' style="background:url(style/burger.jpg);display: table; #position: relative; overflow: hidden;">
+    <div class='banner' style="background:url(style/profile.jpg);display: table; #position: relative; overflow: hidden;">
         <div style="#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;">
             <div style="width:100%;padding:0 3%;#position: relative; #top: -50%">
                 <div class='block'>
