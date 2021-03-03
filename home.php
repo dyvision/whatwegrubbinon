@@ -15,9 +15,8 @@ use wwgo\visual;
 <body>
     <?php $build = new visual();
     echo $build->header(); ?>
-    <span class='spacer'></span>
 
-    <div class='banner' style="display: table; height: 400px; #position: relative; overflow: hidden;">
+    <div class='banner' style="display: table; #position: relative; overflow: hidden;">
         <div style="#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;">
             <div style="#position: relative; #top: -50%">
                 <h1>What We Grubbin' On?</h1>
