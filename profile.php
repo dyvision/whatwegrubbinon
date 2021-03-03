@@ -12,7 +12,7 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['guid']) and isset($_COOKIE['refres
     $verify = json_decode($auth->verify($token['access_token']), true);
     $user = new user($token['access_token'], $_COOKIE['id'], $_COOKIE['guid'], null);
 } else {
-    header('location: home.php');
+    header('location: home');
 }
 $user->pull();
 $profile = json_decode($user->get(), true);

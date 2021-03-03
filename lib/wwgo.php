@@ -4,7 +4,7 @@ namespace wwgo {
 
     //list of constants. making changes here will reflect everywhere
     const main_url = 'whatwegrubbinon.com';
-    const redir_page = 'login.php';
+    const redir_page = 'login';
     const client_id = '634372968316-6p6nf6j795lbja68pd6q35c74pqjb55s.apps.googleusercontent.com';
     const client_secret = 'yCe3n_MnFwWryOMvyvr_lTBx';
     //be sure to implode scopes
@@ -376,12 +376,12 @@ namespace wwgo {
                 $header = "<div id='navbar'>
                 <a class='navbar-item' href='/'><h3 style='display:inline-block;margin:0;color: rgb(0 226 157);font-size:30px;'>WW</h3><h3 style='margin:0;display:inline-block;font-size:30px;'>GO</h3></a>
                 <h3 class='navbar-item-right' onclick='logout();'><a>Logout</a></h3>
-                <h3 class='navbar-item-right'><a href='profile.php'>Profile</a></h3>
+                <h3 class='navbar-item-right'><a href='profile'>Profile</a></h3>
                 </div>";
             } else {
                 $header = "<div id='navbar'>
                 <a class='navbar-item' href='/'><h3 style='display:inline-block;margin:0;color: rgb(0 226 157);font-size:30px;'>WW</h3><h3 style='margin:0;display:inline-block;font-size:30px;'>GO</h3></a>
-                <h3 class='navbar-item-right'><a href='authorize.php'>Login with Google</a></h3>
+                <h3 class='navbar-item-right'><a href='authorize'>Login with Google</a></h3>
                 </div>";
             }
             return $header;
