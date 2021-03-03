@@ -40,7 +40,6 @@ echo $build->header();
                 <div class='block'>
                     <image class='profile' src=<?php echo "'" . $profile['image'] . "'"; ?>></image>
                     <div class='blockbody'>
-                        <h3><?php echo $profile['email'] ?></h3>
                         <h3><?php echo $profile['fullname'] ?></h3>
                         <h3>Get Recommendations</h3>
                         <form>
