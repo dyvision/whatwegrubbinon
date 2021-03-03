@@ -64,7 +64,7 @@ a:focus {
     box-shadow: 2px 4px 8px black;
     margin: 1%;
     transition: ease 300ms;
-    min-width: 275px;
+    min-width: 300px;
     max-width: 300px;
     max-height: 800px;
     min-height: 800px;
@@ -213,7 +213,7 @@ h1 {
         max-width: 100%;
     }
     .block {
-        min-width: 100%;
-        max-width: 100%;
+        min-width: 300px;
+        max-width: 300px;
     }
 }
