@@ -248,7 +248,6 @@ namespace wwgo {
             setcookie('id', null, 0, '/');
             setcookie('guid', null, 0, '/');
             setcookie('refresh_token', null, 0, '/');
-            header('location: /');
         }
     }
     class food
