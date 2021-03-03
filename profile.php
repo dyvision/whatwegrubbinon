@@ -41,6 +41,18 @@ echo $build->header();
                     <div class='blockbody'>
                         <h3><?php echo $profile['email'] ?></h3>
                         <h3><?php echo $profile['fullname'] ?></h3>
+                        <button>Add A Recipe</button>
+                        <h3>Get Recommendations</h3>
+                        <form>
+                            <select name='frequency'>
+                                <option value='all'>Every Meal</option>
+                                <option value='night'>Every Night</option>
+                                <option value='morning'>Every morning</option>
+                                <option value='mondays'>Every Monday</option>
+                                <option value='month'>Once a month</option>
+                            </select>
+                            <button>Update Frequency</button>
+                        </form>
                     </div>
                 </div>
                 <div class='bigblock'>
