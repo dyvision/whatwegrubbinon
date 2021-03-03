@@ -99,7 +99,8 @@ a:focus {
 }
 
 .banner {
-    height: 300px;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     background: url('banner.jpg');
     color: white;
