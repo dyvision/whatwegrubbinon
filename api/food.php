@@ -1,4 +1,5 @@
 <?php
+header('content-type: application/json');
 include('../lib/wwgo.php');
 
 use wwgo\auth;
