@@ -50,7 +50,7 @@ echo $build->header();
                                 <option value='mondays'>Every Monday</option>
                                 <option value='month'>Once a month</option>
                             </select>
-                            <button>Update Frequency</button>
+                            <input type='button'>Update Frequency</input>
                         </form>
                         <button class='food'>Add A Recipe</button>
                         
