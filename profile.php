@@ -60,7 +60,7 @@ echo $build->header();
                     </div>
                 </div>
                 <div class='bigblock'>
-                    <h1 style='margin:1%;'>Recipes</h1>
+                    <h1 style='margin: 1%;font-size: 60;color: white;text-shadow: 0px 4px 6px #00000091;'>Recipes</h1>
                     <?php
                     $recipe = new food($_COOKIE['id']);
                     $recipes = json_decode($recipe->get(), true);
