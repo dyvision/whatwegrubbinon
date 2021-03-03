@@ -46,7 +46,7 @@ namespace wwgo {
                 $params = [
                     "code=$code",
                     "grant_type=$type",
-                    'redirect_uri=https://' . main_url . '/profile.php',
+                    'redirect_uri=https://' . main_url . '/'.redir_page,
                     'client_id=' . client_id,
                     'client_secret=' . client_secret
                 ];
@@ -54,7 +54,7 @@ namespace wwgo {
                 $params = [
                     "refresh_token=$code",
                     "grant_type=$type",
-                    'redirect_uri=https://' . main_url . '/profile.php',
+                    'redirect_uri=https://' . main_url . '/'.redir_page,
                     'client_id=' . client_id,
                     'client_secret=' . client_secret
                 ];
