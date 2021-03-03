@@ -17,12 +17,15 @@ use wwgo\visual;
     echo $build->header(); ?>
     <span class='spacer'></span>
 
-    <center class='banner'>
-        <div class='banner-title'>
-            <h1>What We Grubbin' On?</h1>
-            <span>Find out what you're going to eat tonight. Make a list of interesting foods and have our app randomly suggest one for tonight</span>
+    <div class='banner' style="display: table; height: 400px; #position: relative; overflow: hidden;">
+        <div style="#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;">
+            <div style="#position: relative; #top: -50%">
+                <h1>What We Grubbin' On?</h1>
+                <span>Find out what you're going to eat tonight. Make a list of interesting foods and have our app randomly suggest one for tonight</span>
+            </div>
         </div>
-    </center>
+    </div>
+
     <div class='row'>
         <?php
         ?>
