@@ -52,6 +52,14 @@ echo $build->header();
                             </div>
                         </a>
                     </div>
+                    <div class='block'>
+                        <a href=''>
+                            <image class='profile' src='style/burger.jpg'></image>
+                            <div class='blockbody'>
+                                <h3>this is a test recipe</h3>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
