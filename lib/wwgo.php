@@ -26,9 +26,9 @@ namespace wwgo {
             $params = [
                 'scope=' . implode(' ', scopes),
                 'response_type=code',
+                'access_type=offline',
                 'redirect_uri=https://' . main_url . '/profile.php',
-                'client_id=' . client_id,
-                'access_type=offline'
+                'client_id=' . client_id
             ];
 
             $paramstring = implode('&', $params);
