@@ -1,5 +1,15 @@
 <?php
 
+//to be added
+#logic to give recommendations
+#front end button to delete recipe from wallet
+#tags system
+
+//ideas
+#share class: add a "following" array to your user object of user id's / create a "following" list on your profile page / if you have another person's id it will include their recipe wallet when showing available recipes
+#a food/ideas page: a selection of everyone's recipes. "see what other users like:" / The ability to click "add to recipe wallet" - will need to convert the "id" field in recipes.json to an array to account for duplicate items in food/ideas tab
+#chrome extension to quickly add url with it's name (like a bookmark) and use the seo image as the reference image
+
 namespace wwgo {
 
     //list of constants. making changes here will reflect everywhere
