@@ -62,7 +62,7 @@ echo $build->header();
                         </form>
                         
                         <span style='color:grey'>API Key: <?php echo $profile['id'] ?></span></br>
-                        <span style='color:grey'>API Secret:<?php echo $profile['guid'] ?></span>
+                        <span style='color:grey'>API Secret: <?php echo $profile['guid'] ?></span>
 
                     </div>
                 </div>
