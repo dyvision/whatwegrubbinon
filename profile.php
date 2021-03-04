@@ -17,6 +17,8 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['guid']) and isset($_COOKIE['refres
 $user->pull();
 $profile = json_decode($user->get(), true);
 
+$u = $_COOKIE['id'];
+$p = $_COOKIE['guid'];
 ?>
 
 <head>
@@ -52,9 +54,15 @@ echo $build->header();
                             </select>
                             <button>Update Frequency</button>
                         </form>
-                        <button class='recipe-button'>Add A Recipe</button></br>
+                        <form action="https://<?php echo $u ?>:<?php echo $p ?>@whatwegrubbinon.com/api/food" method='POST'>
+                            <input type='text' name='name' placeholder='Recipe Name'>
+                            <input type='text' name='image' placeholder='Recipe Image'>
+                            <input type='text' name='url' placeholder='Recipe URL'>
+                            <button class='recipe-button'>Add A Recipe</button></br>
+                        </form>
+                        
                         <span style='color:grey'>API Key: <?php echo $profile['id'] ?></span></br>
-                        <span style='color:grey'>API Secret:<?php echo $profile['guid'] ?></span>
+                        <span style='color:grey'>API Secret: <?php echo $profile['guid'] ?></span>
 
                     </div>
                 </div>

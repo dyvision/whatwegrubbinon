@@ -18,6 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     $food = new food($apikey);
     print_r($food->create($post['name'], $post['image'], $post['url']));
+    if ($_POST != null) {
+        header('location: ../profile');
+    }
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $food = new food($apikey);
     print_r($food->get($_GET['rid']));
