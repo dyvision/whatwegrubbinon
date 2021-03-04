@@ -4,7 +4,7 @@ include('lib/wwgo.php');
 use wwgo\auth;
 use wwgo\user;
 use wwgo\visual;
-use wwgo\food;
+use wwgo\recipe;
 
 if (isset($_COOKIE['id']) and isset($_COOKIE['guid']) and isset($_COOKIE['refresh_token'])) {
     $auth = new auth();
@@ -54,7 +54,7 @@ echo $build->header();
                             </select>
                             <button>Update Frequency</button>
                         </form>
-                        <form action="https://<?php echo $u ?>:<?php echo $p ?>@whatwegrubbinon.com/api/food" method='POST'>
+                        <form action="https://<?php echo $u ?>:<?php echo $p ?>@whatwegrubbinon.com/api/recipe" method='POST'>
                             <input type='text' name='name' placeholder='Recipe Name'>
                             <input type='text' name='image' placeholder='Recipe Image'>
                             <input type='text' name='url' placeholder='Recipe URL'>
@@ -69,7 +69,7 @@ echo $build->header();
                 <div class='bigblock'>
                     <h1 style='margin: 1%;font-size: 60;color: white;text-shadow: 0px 4px 6px #00000091;'>Recipes</h1>
                     <?php
-                    $recipe = new food($_COOKIE['id']);
+                    $recipe = new recipe($_COOKIE['id']);
                     $recipes = json_decode($recipe->get(), true);
                     foreach ($recipes as $food) { ?>
                         <div class='innerblock'>

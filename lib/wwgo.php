@@ -23,7 +23,7 @@ namespace wwgo {
         'https%3A//www.googleapis.com/auth/userinfo.profile',
         'openid'
     ];
-    const food_db_path = '/var/www/html/db/whatwegrubbinon/recipes.json';
+    const recipe_db_path = '/var/www/html/db/whatwegrubbinon/recipes.json';
     const user_db_path = '/var/www/html/db/whatwegrubbinon/users.json';
 
     class auth
@@ -278,7 +278,7 @@ namespace wwgo {
             setcookie('refresh_token', null, 0, '/');
         }
     }
-    class food
+    class recipe
     {
         public $rid;
         public $name;
@@ -286,16 +286,30 @@ namespace wwgo {
         public $url;
         protected $id;
 
+        /**
+         * @abstract This function is used to construct the Recipe Class. The construct searches the user DB by ID to confirm the user exists in the system. The supporting class functions pull data based on the actual recipe
+         * @param string $id The User ID
+         * @var string $rid The Recipe ID
+         * @var string $name The Recipe's Name
+         * @var string $url The Recipe's URL
+         * @var string $image The Recipe's Image URL
+         * @return void Constructs a client to access recipes
+         */
         function __construct($id)
         {
             $this->id = $id;
             return;
         }
+        /**
+         * @abstract This function does 2 things: If a RID is provided it will lookup a specific recipe and return a single JSON object. If RID is not provided it will return all related recipes according to the recipe client that was constructed
+         * @param string $rid Not Required - The Recipe ID to lookup
+         * @return mixed JSON - Returns either an array of all related recipes or an object of a single recipe
+         */
         function get($rid = null)
         {
             if ($rid != null) {
                 //get array
-                $recipes = json_decode(file_get_contents(food_db_path), true);
+                $recipes = json_decode(file_get_contents(recipe_db_path), true);
 
                 //search using main identifier
                 $recipe = array_search($rid, array_column($recipes, 'rid'));
@@ -312,7 +326,7 @@ namespace wwgo {
                 return json_encode($this);
             } else {
                 //get array
-                $recipes = json_decode(file_get_contents(food_db_path), true);
+                $recipes = json_decode(file_get_contents(recipe_db_path), true);
 
                 $output = [];
 
@@ -327,7 +341,7 @@ namespace wwgo {
         function create($name, $image, $url)
         {
             //get array
-            $recipes = json_decode(file_get_contents(food_db_path), true);
+            $recipes = json_decode(file_get_contents(recipe_db_path), true);
 
             $this->rid = uniqid();
             $this->name = $name;
@@ -342,14 +356,14 @@ namespace wwgo {
 
             array_push($recipes, $recipe);
 
-            $file = fopen(food_db_path, 'w');
+            $file = fopen(recipe_db_path, 'w');
             fwrite($file, json_encode($recipes));
             fclose($file);
         }
         function delete($rid)
         {
             //get array
-            $recipes = json_decode(file_get_contents(food_db_path), true);
+            $recipes = json_decode(file_get_contents(recipe_db_path), true);
             $new_list = [];
 
             //search using main identifier
@@ -361,7 +375,7 @@ namespace wwgo {
                     array_push($new_list, $recipe);
                 }
             }
-            $file = fopen(food_db_path, 'w');
+            $file = fopen(recipe_db_path, 'w');
             fwrite($file, json_encode($new_list));
             fclose($file);
             return json_encode($result['message'] = $rid . " Deleted");
