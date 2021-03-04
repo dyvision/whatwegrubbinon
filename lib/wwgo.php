@@ -28,10 +28,18 @@ namespace wwgo {
 
     class auth
     {
+        /**
+         * Builds a Auth Class Client to use the functions
+         */
         function __construct()
         {
             return;
         }
+        /**
+         * Redirects users to an authorization page where they can log in using their Google account. The redirect URI will bring them back to WWGO's login.php page after authorizing and it will provide an authorization code which is then used in the authentication function
+         *
+         * @return redirect
+         */
         function authorize()
         {
             $params = [
@@ -46,6 +54,13 @@ namespace wwgo {
             $url = "https://accounts.google.com/o/oauth2/v2/auth?$paramstring";
             header("location: $url");
         }
+        /**
+         * After running the authorize function and gaining access to the user's code it will use this to push out a request for that users access_token and refresh_token. The access token is used when a user is working directly with the Google API. The refresh token is something we save in our system so that if we run any form of Google integration on the backend we can act as that user and update their information by using this function to get another access token
+         *
+         * @param string $code The code or refresh_token you're using to gain access to your Google Access Token
+         * @param string $type Either 'authorization_code' or 'refresh_token'
+         * @return string - JSON - You receive a JSON formatted object back with fields like 'access_token' and 'refresh_token'
+         */
         function authenticate($code, $type)
         {
             //set the url to the authenticate api
@@ -97,6 +112,12 @@ namespace wwgo {
 
             return $response;
         }
+        /**
+         * This function confirms that user exists in Google
+         *
+         * @param string $token The access token for said user
+         * @return string JSON - A JSON object with 'id','guid', and 'message' fields
+         */
         function verify($token)
         {
             //create auth header
@@ -129,6 +150,13 @@ namespace wwgo {
             }
             return json_encode($result);
         }
+        /**
+         * A function to confirm the user exists in the WWGO system without providing a token. If not found this will lock a person from accessing any of the protected pages. Use this on API pages
+         *
+         * @param string $apikey - The User's API Key which is also their Google ID
+         * @param string $apisecret - The User's API Secret which is also their WWGO GUID
+         * @return void
+         */
         function api_verify($apikey, $apisecret)
         {
             //get array
@@ -147,6 +175,19 @@ namespace wwgo {
             }
         }
     }
+    /**
+         * A class to access user data. Functions include getting user data, syncing user data from Google, creating a user, logging a user in, and logging a user out
+         * @var string $id The Accessor's User ID - This is the Google ID but is stored in WWGO as well to reference the user and their refresh token
+         * @var string $access_token The Accessor's Google Access Token
+         * @var string $refresh_token The Accessor's Google Refresh Token
+         * @var string $email The User's Google Email
+         * @var string $fullname The User's Google Full Name
+         * @var string $firstname The User's Google First Name 
+         * @var string $lastname The User's Google Last Name 
+         * @var string $image The User's Google Profile Picture
+         * @var string $guid The User's GUID - This is a WWGO secret to confirm the user is who they say they are. It is randomly generated on creation 
+         * @link null No Public API Endpoint
+         */
     class user
     {
         public $email;
@@ -159,6 +200,14 @@ namespace wwgo {
         protected $refresh_token;
         protected $access_token;
 
+        /**
+         * Constructing a User Class will look up a user based on their id and guid or store data in the class to create the user soon after. A token is always required at this point because it pulls data from Google for multiple functions. If you don't have you token yet use the Auth class and authorize/authenticate functions        
+         * @param string $token Required - The User's Google Access Token. This is used in the pull function to grab data from Google (may integrate with other APIs later which is why it's required at this level and not simply in the pull function. If you don't have this use the Auth class and authorize/authenticate functions)
+         * @param string $id Required - The User's Google ID. Used to lookup user or create a new user and have it sync with Google
+         * @param string $guid Semi-Required - Required to use the User class for an existing user. Not required for creating a new user
+         * @param string $refresh_token Semi-Required - Required for creating a new user. Not required for anything else. Will be overlooked if provided for an existing user
+         * @return string JSON - Returns a json with a "message" field and the user's "guid"
+         */
         function __construct($token, $id, $guid = null, $refresh_token = null)
         {
             //get array
@@ -200,10 +249,20 @@ namespace wwgo {
             //return the user's data
             return json_encode($result);
         }
+        /**
+         * Returns User's data
+         *
+         * @return string JSON - Returns a JSON formatted version of the User Class. See the class description for the returned variables
+         */
         function get()
         {
             return json_encode($this);
         }
+        /**
+         * Uses the class's Google Access Token to retrieve and update the related user's User data in the user_db_path file
+         *
+         * @return void
+         */
         function pull()
         {
             //create auth header
@@ -247,6 +306,11 @@ namespace wwgo {
 
             return;
         }
+        /**
+         * Creates a user object in the user_db_path file. Only logs the ID, GUID, and Refresh Token. To sync the user's data use the pull function
+         *
+         * @return void
+         */
         function create()
         {
             //get user db
@@ -265,12 +329,22 @@ namespace wwgo {
             fwrite($file, json_encode($users));
             fclose($file);
         }
+        /**
+         * Logs the user into WWGO by creating the id, guid, and refresh cookies
+         *
+         * @return void
+         */
         function login()
         {
             setcookie('id', $this->id, 0, '/');
             setcookie('guid', $this->guid, 0, '/');
             setcookie('refresh_token', $this->refresh_token, 0, '/');
         }
+        /**
+         * Logs the user out of WWGO by deleting the id, guid, and refresh cookies
+         *
+         * @return void
+         */
         function logout()
         {
             setcookie('id', null, 0, '/');
@@ -278,6 +352,15 @@ namespace wwgo {
             setcookie('refresh_token', null, 0, '/');
         }
     }
+    /**
+         * A class to access recipe data. Functions include getting recipe data, creating recipe data, and deleting recipe data
+         * @var string $id The Accessor's User ID
+         * @var string $rid The Recipe ID
+         * @var string $name The Recipe's Name
+         * @var string $url The Recipe's URL
+         * @var string $image The Recipe's Image URL
+         * @link https://whatwegrubbinon.com/api/recipe Public API Endpoint 
+         */
     class recipe
     {
         public $rid;
@@ -287,12 +370,8 @@ namespace wwgo {
         protected $id;
 
         /**
-         * @abstract This function is used to construct the Recipe Class. The construct searches the user DB by ID to confirm the user exists in the system. The supporting class functions pull data based on the actual recipe
+         * This function is used to construct the Recipe Class. The construct searches the user DB by ID to confirm the user exists in the system. The supporting class functions pull data based on the actual recipe
          * @param string $id The User ID
-         * @var string $rid The Recipe ID
-         * @var string $name The Recipe's Name
-         * @var string $url The Recipe's URL
-         * @var string $image The Recipe's Image URL
          * @return void Constructs a client to access recipes
          */
         function __construct($id)
@@ -301,9 +380,9 @@ namespace wwgo {
             return;
         }
         /**
-         * @abstract This function does 2 things: If a RID is provided it will lookup a specific recipe and return a single JSON object. If RID is not provided it will return all related recipes according to the recipe client that was constructed
+         * This function does 2 things: If a RID is provided it will lookup a specific recipe and return a single JSON object. If RID is not provided it will return all related recipes according to the recipe client that was constructed
          * @param string $rid Not Required - The Recipe ID to lookup
-         * @return mixed JSON - Returns either an array of all related recipes or an object of a single recipe
+         * @return string JSON - Returns either an array of all related recipes or an object of a single recipe
          */
         function get($rid = null)
         {
@@ -338,6 +417,13 @@ namespace wwgo {
                 return json_encode($output);
             }
         }
+        /**
+         * This function creates a new recipe in the recipe_db_path DB
+         * @param string $name The Recipe's Name
+         * @param string $image The Recipe's Image URL (right click > copy image address)
+         * @param string $url The Recipe's URL
+         * @return string JSON - Returns a success message
+         */
         function create($name, $image, $url)
         {
             //get array
@@ -359,7 +445,14 @@ namespace wwgo {
             $file = fopen(recipe_db_path, 'w');
             fwrite($file, json_encode($recipes));
             fclose($file);
+
+            return json_encode($result['message'] = $this->rid.' Created');
         }
+        /**
+         * This function deletes a recipe in the recipe_db_path DB
+         * @param string $rid The Recipe's ID
+         * @return string JSON - Returns a success message
+         */
         function delete($rid)
         {
             //get array
