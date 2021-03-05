@@ -3,6 +3,7 @@
 //to be added
 #logic to give recommendations
 #front end button to delete recipe from wallet
+#front end button for 'tried it'
 #tags system
 
 //ideas
