@@ -458,19 +458,16 @@ namespace wwgo {
         {
             //get array
             $recipes = json_decode(file_get_contents(recipe_db_path), true);
-            $new_list = [];
-
             //search using main identifier
-            foreach ($recipes as $recipe) {
+            $recipe = array_search($rid, array_column($recipes, 'rid'));
 
-                //perform a comparitive function on the item number that was returned
-                if ($recipe['rid'] == $rid and in_array($this->id, $recipe['id'])) {
-                } else {
-                    array_push($new_list, $recipe);
-                }
+            //perform a comparitive function on the item number that was returned
+            if ($recipes[$recipe]['rid'] == $rid and in_array($this->id, $recipes[$recipe]['id'])) {
+                $replace = array_search($this->id, $recipes[$recipe]['id']);
+                unset($recipes[$recipe]['id'][$replace])
             }
             $file = fopen(recipe_db_path, 'w');
-            fwrite($file, json_encode($new_list));
+            fwrite($file, json_encode($recipes));
             fclose($file);
             return json_encode($result['message'] = $rid . " Deleted");
         }
@@ -491,7 +488,8 @@ namespace wwgo {
                 return json_encode($result['message'] = $rid . " added to wallet");
             }
         }
-        function explore(){
+        function explore()
+        {
             return file_get_contents(recipe_db_path);
         }
     }
