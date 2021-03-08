@@ -482,7 +482,7 @@ namespace wwgo {
             $recipe = array_search($rid, array_column($recipes, 'rid'));
 
             //perform a comparitive function on the item number that was returned
-            if ($recipes[$recipe]['rid'] == $rid and in_array($this->id, $recipes[$recipe]['id'])) {
+            if ($recipes[$recipe]['rid'] == $rid) {
                 array_push($recipes[$recipe]['id'], $this->id);
 
                 $file = fopen(recipe_db_path, 'w');
