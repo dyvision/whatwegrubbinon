@@ -511,6 +511,7 @@ namespace wwgo {
                 <a class='navbar-item' href='/'><h3 style='display:inline-block;margin:0;color: rgb(0 226 157);font-size:30px;'>WW</h3><h3 style='margin:0;display:inline-block;font-size:30px;'>GO</h3></a>
                 <h3 class='navbar-item-right' onclick='logout();'><a>Logout</a></h3>
                 <h3 class='navbar-item-right'><a href='profile'>Profile</a></h3>
+                <h3 class='navbar-item-right'><a href='explore'>Explore</a></h3>
                 </div>";
             } else {
                 $header = "<div id='navbar'>
