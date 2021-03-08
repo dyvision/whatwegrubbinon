@@ -27,7 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     $food = new recipe($apikey);
     print_r($food->delete($_GET['rid']));
-} else {
+} elseif ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+    $post = json_decode(file_get_contents('php://input'), true);
+    if ($post == null) {
+        $post = $_POST;
+    }
+    $food = new recipe($apikey);
+    print_r($food->add_user($post['rid']));
+}else {
     header('HTTP/1.1 403 Not Supported');
     exit("Method not supported");
 }
