@@ -40,7 +40,7 @@ echo $build->header();
     <span style='background:transparent' class='spacer'></span>
             <div style="width:100%;padding:0 3%;">
                 <div class='bigblock'>
-                    <h1 style='margin: 1%;font-size: 60;color: white;text-shadow: 0px 4px 6px #00000091;'>Recipes</h1>
+                    <h1 style='margin: 1%;font-size: 60;color: white;text-shadow: 0px 4px 6px #00000091;'>See What Other People Like:</h1>
                     <?php
                     $recipe = new recipe($_COOKIE['id']);
                     $recipes = json_decode($recipe->explore(), true);
