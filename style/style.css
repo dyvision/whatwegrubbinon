@@ -35,6 +35,16 @@ input{
     box-shadow: 0px 4px 8px #eeeeee2e;
     cursor: pointer;
 }
+.recipe-button:focus {
+    transition: ease 300ms;
+    background: grey;
+    cursor: pointer;
+}
+.recipe-button:disabled {
+    transition: ease 300ms;
+    background: grey;
+    cursor: pointer;
+}
 
 body {
     background: linear-gradient(2deg, #fafafa, #f5f5f5);
