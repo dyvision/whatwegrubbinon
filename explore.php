@@ -51,7 +51,7 @@ echo $build->header();
                                 <div class='blockbody'>
                                     <h3><?php echo $food['name'] ?></h3>
                                     <?php if(in_array($_COOKIE['id'],$food['id'])){$disabled = 'disabled';$added='Already Added';}else {$disabled = '';$added='Add To My Recipes';} ?>
-                                    <button type='button' class='recipe-button' <?php echo $disabled; ?> onclick="add_recipe(<?php echo '\''.$food['rid'].'\',\''.$_COOKIE['id'].'\',\''.$_COOKIE['guid'].'\''; ?>);"><?php $added ?></button>
+                                    <button type='button' class='recipe-button' <?php echo $disabled; ?> onclick="add_recipe(<?php echo '\''.$food['rid'].'\',\''.$_COOKIE['id'].'\',\''.$_COOKIE['guid'].'\''; ?>);"><?php echo $added ?></button>
                                 </div>
                         </div>
                     <?php
