@@ -50,8 +50,8 @@ echo $build->header();
                                 <image class='profile' src='<?php echo $food['image'] ?>'></image></a>
                                 <div class='blockbody'>
                                     <h3><?php echo $food['name'] ?></h3>
-                                    <?php if(in_array($_COOKIE['id'],$food['id'])){$disabled = 'disabled';}else {$disabled = '';} ?>
-                                    <button type='button' class='recipe-button' <?php echo $disabled; ?> onclick="add_recipe(<?php echo '\''.$food['rid'].'\',\''.$_COOKIE['id'].'\',\''.$_COOKIE['guid'].'\''; ?>);">Add To My Recipes</button>
+                                    <?php if(in_array($_COOKIE['id'],$food['id'])){$disabled = 'disabled';$added='Already Added';}else {$disabled = '';$added='Add To My Recipes';} ?>
+                                    <button type='button' class='recipe-button' <?php echo $disabled; ?> onclick="add_recipe(<?php echo '\''.$food['rid'].'\',\''.$_COOKIE['id'].'\',\''.$_COOKIE['guid'].'\''; ?>);"><?php $added ?></button>
                                 </div>
                         </div>
                     <?php
