@@ -77,6 +77,8 @@ echo $build->header();
                                 <image class='profile' src='<?php echo $food['image'] ?>'></image>
                                 <div class='blockbody'>
                                     <h3><?php echo $food['name'] ?></h3>
+                                    <button type='button' class='recipe-button' <?php echo $disabled; ?> onclick="delete_recipe(<?php echo '\''.$food['rid'].'\',\''.$_COOKIE['id'].'\',\''.$_COOKIE['guid'].'\''; ?>);">Remove Recipe</button>
+                                
                                 </div>
                             </a>
                         </div>
