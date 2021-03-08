@@ -464,7 +464,7 @@ namespace wwgo {
             //perform a comparitive function on the item number that was returned
             if ($recipes[$recipe]['rid'] == $rid and in_array($this->id, $recipes[$recipe]['id'])) {
                 $replace = array_search($this->id, $recipes[$recipe]['id']);
-                unset($recipes[$recipe]['id'][$replace])
+                unset($recipes[$recipe]['id'][$replace]);
             }
             $file = fopen(recipe_db_path, 'w');
             fwrite($file, json_encode($recipes));
