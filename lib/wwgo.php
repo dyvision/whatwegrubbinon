@@ -177,18 +177,18 @@ namespace wwgo {
         }
     }
     /**
-         * A class to access user data. Functions include getting user data, syncing user data from Google, creating a user, logging a user in, and logging a user out
-         * @var string $id The Accessor's User ID - This is the Google ID but is stored in WWGO as well to reference the user and their refresh token
-         * @var string $access_token The Accessor's Google Access Token
-         * @var string $refresh_token The Accessor's Google Refresh Token
-         * @var string $email The User's Google Email
-         * @var string $fullname The User's Google Full Name
-         * @var string $firstname The User's Google First Name 
-         * @var string $lastname The User's Google Last Name 
-         * @var string $image The User's Google Profile Picture
-         * @var string $guid The User's GUID - This is a WWGO secret to confirm the user is who they say they are. It is randomly generated on creation 
-         * @link null No Public API Endpoint
-         */
+     * A class to access user data. Functions include getting user data, syncing user data from Google, creating a user, logging a user in, and logging a user out
+     * @var string $id The Accessor's User ID - This is the Google ID but is stored in WWGO as well to reference the user and their refresh token
+     * @var string $access_token The Accessor's Google Access Token
+     * @var string $refresh_token The Accessor's Google Refresh Token
+     * @var string $email The User's Google Email
+     * @var string $fullname The User's Google Full Name
+     * @var string $firstname The User's Google First Name 
+     * @var string $lastname The User's Google Last Name 
+     * @var string $image The User's Google Profile Picture
+     * @var string $guid The User's GUID - This is a WWGO secret to confirm the user is who they say they are. It is randomly generated on creation 
+     * @link null No Public API Endpoint
+     */
     class user
     {
         public $email;
@@ -354,14 +354,14 @@ namespace wwgo {
         }
     }
     /**
-         * A class to access recipe data. Functions include getting recipe data, creating recipe data, and deleting recipe data
-         * @var string $id The Accessor's User ID
-         * @var string $rid The Recipe ID
-         * @var string $name The Recipe's Name
-         * @var string $url The Recipe's URL
-         * @var string $image The Recipe's Image URL
-         * @link https://whatwegrubbinon.com/api/recipe Public API Endpoint 
-         */
+     * A class to access recipe data. Functions include getting recipe data, creating recipe data, and deleting recipe data
+     * @var string $id The Accessor's User ID
+     * @var string $rid The Recipe ID
+     * @var string $name The Recipe's Name
+     * @var string $url The Recipe's URL
+     * @var string $image The Recipe's Image URL
+     * @link https://whatwegrubbinon.com/api/recipe Public API Endpoint 
+     */
     class recipe
     {
         public $rid;
@@ -395,7 +395,7 @@ namespace wwgo {
                 $recipe = array_search($rid, array_column($recipes, 'rid'));
 
                 //perform a comparitive function on the item number that was returned
-                if ($recipes[$recipe]['rid'] == $rid and $recipes[$recipe]['id'] == $this->id) {
+                if ($recipes[$recipe]['rid'] == $rid and in_array($this->id, $recipes[$recipe]['id'])) {
                     $this->rid = $recipes[$recipe]['rid'];
                     $this->name = $recipes[$recipe]['name'];
                     $this->image = $recipes[$recipe]['image'];
@@ -411,7 +411,7 @@ namespace wwgo {
                 $output = [];
 
                 foreach ($recipes as $recipe) {
-                    if ($recipe['id'] == $this->id) {
+                    if (in_array($this->id, $recipe['id'])) {
                         array_push($output, $recipe);
                     }
                 }
@@ -439,7 +439,7 @@ namespace wwgo {
             $recipe['name'] = $name;
             $recipe['image'] = $image;
             $recipe['url'] = $url;
-            $recipe['id'] = $this->id;
+            $recipe['id'] = [$this->id];
 
             array_push($recipes, $recipe);
 
@@ -447,7 +447,7 @@ namespace wwgo {
             fwrite($file, json_encode($recipes));
             fclose($file);
 
-            return json_encode($result['message'] = $this->rid.' Created');
+            return json_encode($result['message'] = $this->rid . ' Created');
         }
         /**
          * This function deletes a recipe in the recipe_db_path DB
@@ -464,7 +464,7 @@ namespace wwgo {
             foreach ($recipes as $recipe) {
 
                 //perform a comparitive function on the item number that was returned
-                if ($recipe['rid'] == $rid and $recipe['id'] == $this->id) {
+                if ($recipe['rid'] == $rid and in_array($this->id, $recipe['id'])) {
                 } else {
                     array_push($new_list, $recipe);
                 }
@@ -473,6 +473,23 @@ namespace wwgo {
             fwrite($file, json_encode($new_list));
             fclose($file);
             return json_encode($result['message'] = $rid . " Deleted");
+        }
+        function add_user($rid)
+        {
+            $recipes = json_decode(file_get_contents(recipe_db_path), true);
+
+            //search using main identifier
+            $recipe = array_search($rid, array_column($recipes, 'rid'));
+
+            //perform a comparitive function on the item number that was returned
+            if ($recipes[$recipe]['rid'] == $rid and in_array($this->id, $recipes[$recipe]['id'])) {
+                array_push($recipes[$recipe]['id'], $this->id);
+
+                $file = fopen(recipe_db_path, 'w');
+                fwrite($file, json_encode($recipes));
+                fclose($file);
+                return json_encode($result['message'] = $rid . " added to wallet");
+            }
         }
     }
     class tag
