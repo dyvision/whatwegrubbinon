@@ -74,13 +74,13 @@ echo $build->header();
                     foreach ($recipes as $food) { ?>
                         <div class='innerblock'>
                             <a href='<?php echo $food['url'] ?>'>
-                                <image class='profile' src='<?php echo $food['image'] ?>'></image>
+                                <image class='profile' src='<?php echo $food['image'] ?>'></image></a>
                                 <div class='blockbody'>
                                     <h3><?php echo $food['name'] ?></h3>
                                     <button type='button' class='recipe-button' <?php echo $disabled; ?> onclick="delete_recipe(<?php echo '\''.$food['rid'].'\',\''.$_COOKIE['id'].'\',\''.$_COOKIE['guid'].'\''; ?>);">Remove Recipe</button>
                                 
                                 </div>
-                            </a>
+                            
                         </div>
                     <?php
                     }
