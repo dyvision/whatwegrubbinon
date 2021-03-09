@@ -25,6 +25,7 @@ namespace wwgo {
     ];
     const recipe_db_path = '/var/www/html/db/whatwegrubbinon/recipes.json';
     const user_db_path = '/var/www/html/db/whatwegrubbinon/users.json';
+    const email_db_path = 'var/www/html/db/whatwegrubbinon/emails.json';
 
     class auth
     {
@@ -434,7 +435,7 @@ namespace wwgo {
             $this->image = $image;
             $this->url = $url;
 
-            $recipe['rid'] = uniqid();
+            $recipe['rid'] = $this->rid;
             $recipe['name'] = $name;
             $recipe['image'] = $image;
             $recipe['url'] = $url;
@@ -498,6 +499,88 @@ namespace wwgo {
         {
         }
     }
+    class recommendations
+    {
+        public $id;
+        public $tz;
+        public $email;
+
+        function __construct($id, $guid)
+        {
+            $this->id = $id;
+            $this->guid = $guid;
+            return;
+        }
+        function generate()
+        {
+            //get array
+            $recipes = json_decode(file_get_contents(recipe_db_path), true);
+
+            $output = [];
+
+            foreach ($recipes as $recipe) {
+                if (in_array($this->id, $recipe['id'])) {
+                    array_push($output, $recipe);
+                }
+            }
+            return json_encode($output[rand(0, count($output))]);
+        }
+        function get()
+        {
+        }
+        function send($rid, $email)
+        {
+            //get array
+            $recipes = json_decode(file_get_contents(recipe_db_path), true);
+
+            //search using main identifier
+            $recipe = array_search($rid, array_column($recipes, 'rid'));
+
+            //perform a comparitive function on the item number that was returned
+            if ($recipes[$recipe]['rid'] == $rid) {
+                $msg = "<center><h1>Here's your recommendation: <a href='" . $recipes[$recipe]['url'] . "'>" . $recipes[$recipe]['name'] . "</a><h1></center>";
+                mail($email, 'What We Grubbin\' On', $msg);
+            }
+        }
+        function create($id, $tz, $type)
+        {
+            //get array
+            $recs = json_decode(file_get_contents(email_db_path), true);
+
+            $this->tid = uniqid();
+            $this->id = $id;
+            $this->tz = $tz;
+            $this->type = $type;
+
+            $rec['tid'] = $this->tid;
+            $rec['id'] = $id;
+            $rec['tz'] = $tz;
+            $rec['type'] = $type;
+
+            array_push($recs, $rec);
+
+            $file = fopen(email_db_path, 'w');
+            fwrite($file, json_encode($rec));
+            fclose($file);
+
+            return json_encode($result['message'] = $this->tid . ' Created');
+        }
+        function delete($tid)
+        {
+            $new_recs = [];
+            $recs = json_decode(file_get_contents(email_db_path), true);
+            foreach ($recs as $rec) {
+                if ($rec['tid'] == $tid and $rec['id'] == $this->id) {
+                } else {
+                    array_push($new_recs, $rec);
+                }
+            }
+            $file = fopen(email_db_path, 'w');
+            fwrite($file, json_encode($new_recs));
+            fclose($file);
+            return json_encode($result['message'] = $tid . " Deleted");
+        }
+    }
     class visual
     {
         function __construct()
@@ -523,7 +606,7 @@ namespace wwgo {
         }
         function timezone()
         {
-            echo '<select width="100%">
+            echo '<select name="timezone" width="100%">
             <option timeZoneId="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00) International Date Line West</option>
             <option timeZoneId="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" value="-11">(GMT-11:00) Midway Island, Samoa</option>
             <option timeZoneId="3" gmtAdjustment="GMT-10:00" useDaylightTime="0" value="-10">(GMT-10:00) Hawaii</option>
@@ -606,7 +689,7 @@ namespace wwgo {
             <option timeZoneId="80" gmtAdjustment="GMT+12:00" useDaylightTime="1" value="12">(GMT+12:00) Auckland, Wellington</option>
             <option timeZoneId="81" gmtAdjustment="GMT+12:00" useDaylightTime="0" value="12">(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
             <option timeZoneId="82" gmtAdjustment="GMT+13:00" useDaylightTime="0" value="13">(GMT+13:00) Nuku\'alofa</option>
-        </select>';
+            </select>';
         }
     }
 }
