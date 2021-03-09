@@ -1,6 +1,7 @@
 <?php
 
 include('lib/wwgo.php');
+header('content-type: application/json');
 
 use wwgo\recommendation;
 
