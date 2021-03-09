@@ -213,6 +213,9 @@ div::-webkit-scrollbar {
 h1 {
     margin: 0;
 }
+h3{
+    margin: 5px;
+}
 
 @media (min-width: 800px) {
     .banner-h3 {
