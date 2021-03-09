@@ -73,7 +73,7 @@ echo $build->header();
                     $recipe = new recipe($_COOKIE['id']);
                     $recipes = json_decode($recipe->get(), true);
                     foreach ($recipes as $food) { ?>
-                        <div class='innerblock'>
+                        <div if="<?php echo $food['rid']; ?>" class='innerblock'>
                             <a href='<?php echo $food['url'] ?>'>
                                 <image class='profile' src='<?php echo $food['image'] ?>'></image></a>
                                 <div  class='blockbody'>
