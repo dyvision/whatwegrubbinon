@@ -11,7 +11,7 @@ $apisecret = $_SERVER['PHP_AUTH_PW'];
 $auth = new auth();
 $creds = json_decode($auth->api_verify($apikey, $apisecret),true);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     $post = json_decode(file_get_contents('php://input'), true);
     if ($post == null) {
         $post = $_POST;
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     $rec = new recommendation($apikey);
     print_r($rec->delete($_GET['tid']));
-} elseif ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+} elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $post = json_decode(file_get_contents('php://input'), true);
     if ($post == null) {
         $post = $_POST;
