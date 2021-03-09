@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $post = $_POST;
     }
     $rec = new recommendation($apikey);
-    print_r($rec->create($apikey, $post['tz'], $post['type']));
+    print_r($rec->create($apikey, $post['tz'], $post['type'],$email));
 } else {
     header('HTTP/1.1 403 Not Supported');
     exit("Method not supported");

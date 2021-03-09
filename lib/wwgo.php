@@ -168,7 +168,7 @@ namespace wwgo {
 
             //perform a comparitive function on the item number that was returned
             if ($users[$me]['id'] == $apikey and $users[$me]['guid'] == $apisecret) {
-                return;
+                return json_encode($users[$me]);
             } else {
                 header('HTTP/1.1 401 Unauthorized');
                 header('WWW-Authenticate: Basic realm="Enter APIKEY and APISECRET"');
@@ -503,6 +503,7 @@ namespace wwgo {
     {
         public $id;
         public $tz;
+        public $email;
 
         function __construct($id)
         {
@@ -572,7 +573,7 @@ namespace wwgo {
                 return $response;
             }
         }
-        function create($id, $tz, $type)
+        function create($id, $tz, $type,$email)
         {
             //get array
             $recs = json_decode(file_get_contents(email_db_path), true);
