@@ -45,16 +45,16 @@ echo $build->header();
                     <div class='blockbody'>
                         <h3><?php echo $profile['fullname'] ?></h3>
                         <h3>Get Recommendations</h3>
-                        <form >
+                        <?php if($_GET['message'] == 1){echo '<h4 style="color:lightblue">Schedule Set</h4>';} ?>
+                        <form action='api/recommendation' method='PUT'>
                             <?php $build->timezone(); ?>
-                            <select disabled name='frequency'>
-                                <option value='all'>Every Meal</option>
+                            <select name='type'>
                                 <option value='night'>Every Night</option>
                                 <option value='morning'>Every morning</option>
                                 <option value='mondays'>Every Monday</option>
                                 <option value='month'>Once a month</option>
                             </select>
-                            <button disabled>Update Frequency</button>
+                            <button >Update Frequency</button>
                         </form>
                         <form action="https://<?php echo $u ?>:<?php echo $p ?>@whatwegrubbinon.com/api/recipe" method='POST'>
                             <input type='text' name='name' placeholder='Recipe Name'>
