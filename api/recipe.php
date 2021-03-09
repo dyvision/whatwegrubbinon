@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $post = $_POST;
     }
     $food = new recipe($apikey);
-    print_r($food->create($post['name'], $post['image'], $post['url']));
+    print_r($food->create($post['name'], $post['url']));
     if ($_POST != null) {
         header('location: ../profile');
     }
