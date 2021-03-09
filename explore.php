@@ -51,7 +51,7 @@ echo $build->header();
                     $misc = new misc();
                     $order = json_decode($misc->randomize_list($num),true);
                     foreach($order as $rec){
-                        $new_recipes += $recipes[$order];
+                         array_push($new_recipes,$recipes[$order]);
                     }
                     foreach ($new_recipes as $food) { 
                         if(strlen($food['name']) > 34){
