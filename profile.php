@@ -56,7 +56,7 @@ echo $build->header();
                             <button >Update Frequency</button>
                         </form>
                         <form action="https://<?php echo $u ?>:<?php echo $p ?>@whatwegrubbinon.com/api/recipe" method='POST'>
-                            <input required type='text' name='name' placeholder='Recipe Name'>
+                            <!--<input required type='text' name='name' placeholder='Recipe Name'>-->
                             <!--<input required type='text' name='image' placeholder='Recipe Image'>-->
                             <input required type='text' name='url' placeholder='Recipe URL'>
                             <button class='recipe-button'>Add A Recipe</button></br>

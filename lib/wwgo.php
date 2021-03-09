@@ -425,7 +425,7 @@ namespace wwgo {
          * @param string $url The Recipe's URL
          * @return string JSON - Returns a success message
          */
-        function create($name, $url)
+        function create( $url)
         {
             //get array
             $recipes = json_decode(file_get_contents(recipe_db_path), true);
@@ -433,12 +433,12 @@ namespace wwgo {
             $meta = get_meta_tags($url);
 
             $this->rid = uniqid();
-            $this->name = $name;
+            $this->name = $meta['twitter:title'];
             $this->image = $meta['twitter:image'];
             $this->url = $url;
 
             $recipe['rid'] = $this->rid;
-            $recipe['name'] = $name;
+            $recipe['name'] = $this->name;
             $recipe['image'] = $this->image;
             $recipe['url'] = $url;
             $recipe['id'] = [$this->id];
