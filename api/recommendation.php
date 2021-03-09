@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
         $post = $_POST;
         $rec = new recommendation($apikey);
         print_r($rec->create($apikey, $post['tz'], $post['type'],$creds['email']));
-        header('location: profile?message=1');
+        header('location: ../profile?message=1');
     }
     
 } else {
