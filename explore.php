@@ -5,6 +5,7 @@ use wwgo\auth;
 use wwgo\user;
 use wwgo\visual;
 use wwgo\recipe;
+use wwgo\misc;
 
 if (isset($_COOKIE['id']) and isset($_COOKIE['guid']) and isset($_COOKIE['refresh_token'])) {
     $auth = new auth();
@@ -43,9 +44,16 @@ echo $build->header();
                 <div id='list' class='bigblock' style='max-width:100%;min-width:100%'>
                     <h1 style='margin: 1%;font-size: 60;color: white;text-shadow: 0px 4px 6px #00000091;'>See What Other People Like:</h1>
                     <?php
+                    $new_recipes = [];
                     $recipe = new recipe($_COOKIE['id']);
                     $recipes = json_decode($recipe->explore(), true);
-                    foreach ($recipes as $food) { 
+                    $num = count($recipes);
+                    $misc = new misc();
+                    $order = json_decode($misc->randomize_list($num),true);
+                    foreach($order as $rec){
+                        $new_recipes += $recipes[$order];
+                    }
+                    foreach ($new_recipes as $food) { 
                         if(strlen($food['name']) > 34){
                             $foodname = substr($food['name'],0,35).'...';
                         } else {

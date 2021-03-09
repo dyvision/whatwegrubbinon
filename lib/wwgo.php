@@ -522,7 +522,7 @@ namespace wwgo {
                     array_push($output, $recipe);
                 }
             }
-            return json_encode($output[rand(0, count($output)-1)]);
+            return json_encode($output[rand(0, count($output) - 1)]);
         }
         function get()
         {
@@ -559,7 +559,7 @@ namespace wwgo {
 
                 <a href='" . $recipes[$recipe]['url'] . "'>
 
-                <h1>Here's your recommendation: ".$recipes[$recipe]['name']."</h1></a>
+                <h1>Here's your recommendation: " . $recipes[$recipe]['name'] . "</h1></a>
                 
                 <h1>Looking to try something new? <a href='https://whatwegrubbinon.com/explore'>Check out our new Explore page.</a></h1>
                 
@@ -573,7 +573,7 @@ namespace wwgo {
                 </body>";
 
                 $url = 'https://prod-31.eastus2.logic.azure.com:443/workflows/1393bae12b3248d6a0f355e6ef0a444f/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=w2UOyo3iOiC9_bUKVYPEwM_IYYYYPvRc7QYN1t-HaNw';
-                $sub = 'What We Grubbin\' On: '.$recipes[$recipe]['name'];
+                $sub = 'What We Grubbin\' On: ' . $recipes[$recipe]['name'];
 
                 $post['subject'] = $sub;
                 $post['body'] = $msg;
@@ -584,11 +584,11 @@ namespace wwgo {
                 $header = array(
                     'Content-Type: application/json'
                 );
-    
+
                 //send the post request
-    
+
                 $curl = curl_init();
-    
+
                 curl_setopt_array($curl, array(
                     CURLOPT_URL => $url,
                     CURLOPT_RETURNTRANSFER => true,
@@ -598,15 +598,15 @@ namespace wwgo {
                     CURLOPT_POSTFIELDS => $body,
                     CURLOPT_HTTPHEADER => $header,
                 ));
-    
+
                 $response = curl_exec($curl);
-    
+
                 curl_close($curl);
-    
+
                 return $response;
             }
         }
-        function create($id, $tz, $type,$email)
+        function create($id, $tz, $type, $email)
         {
             //get array
             $recs = json_decode(file_get_contents(email_db_path), true);
@@ -759,6 +759,17 @@ namespace wwgo {
             <option timeZoneId="81" gmtAdjustment="GMT+12:00" useDaylightTime="0" value="12">(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
             <option timeZoneId="82" gmtAdjustment="GMT+13:00" useDaylightTime="0" value="13">(GMT+13:00) Nuku\'alofa</option>
             </select>';
+        }
+    }
+    class misc
+    {
+        function __construct()
+        {
+            return;
+        }
+        function randomize_list(int $list_count)
+        {
+            return json_encode(shuffle(range(0, $list_count)));
         }
     }
 }
