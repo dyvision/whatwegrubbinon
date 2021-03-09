@@ -40,7 +40,7 @@ echo $build->header();
     <div class='banner' style="background:url(style/profile.jpg);">
     <span style='background:transparent' class='spacer'></span>
             <div style="width:100%;padding:0 3%;">
-                <div id='list' class='bigblock'>
+                <div id='list' class='bigblock' style='max-width:100%;min-width:100%'>
                     <h1 style='margin: 1%;font-size: 60;color: white;text-shadow: 0px 4px 6px #00000091;'>See What Other People Like:</h1>
                     <?php
                     $recipe = new recipe($_COOKIE['id']);
