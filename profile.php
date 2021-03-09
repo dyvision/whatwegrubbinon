@@ -41,7 +41,7 @@ echo $build->header();
     <span style='background:transparent' class='spacer'></span>
             <div style="width:100%;padding:0 3%;">
                 <div class='block'>
-                    <image class='profile' src=<?php echo "'" . $profile['image'] . "'"; ?>></image>
+                    <image class='profile' src=<?php echo "'" . str_replace('s96','s240',$profile['image']) . "'"; ?>></image>
                     <div class='blockbody'>
                         <h3><?php echo $profile['fullname'] ?></h3>
                         <h3>Get Recommendations</h3>
