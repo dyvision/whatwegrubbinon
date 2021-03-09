@@ -45,7 +45,7 @@ echo $build->header();
                     <div class='blockbody'>
                         <h3><?php echo $profile['fullname'] ?></h3>
                         <h3>Get Recommendations</h3>
-                        <form>
+                        <form disabled>
                             <?php $build->timezone(); ?>
                             <select name='frequency'>
                                 <option value='all'>Every Meal</option>
