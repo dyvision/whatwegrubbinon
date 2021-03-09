@@ -20,9 +20,12 @@ $now = gmdate("Y-m-d H").':00';
 $rec = new recommendation('113077615898413620126');
 $recs = json_decode($rec->get(), true);
 foreach ($recs as $email) {
+    
+    $now = date('Y-m-d H',strtotime($settime)+(60*60*$email['tz'])).':00';
+    $schedtime = date('Y-m-d H',strtotime($settime)+(60*60*($outputs[$type]+$email['tz']))).':00';
+    
     $script['tid'] = $email['tid'];
     $script['script_run'] = $now;
-    $schedtime = date('Y-m-d H',strtotime($settime)+(60*60*($outputs[$email['type']]+$email['tz']))).':00';
     $script['scheduled_time'] = $schedtime;
     if ($now == $schedtime) {
         $gen = new recommendation($email['id']);
