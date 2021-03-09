@@ -539,54 +539,27 @@ namespace wwgo {
             //perform a comparitive function on the item number that was returned
             if ($recipes[$recipe]['rid'] == $rid) {
                 $msg = "<body style='background:url('https://whatwegrubbinon.com/style/profile.jpg')'>
-
+                
                 <center style='padding: 0%;
                 box-shadow: 2px 4px 8px #00000054;
                 margin: 1%;
-                display:inline-block;
                 font-family: helvetica;
+                display:inline-block;
                 transition: ease 300ms;
-                min-width: 300px;
-                max-width: 300px;
-                max-height: 80%;
-                min-height: 80%;
+                min-width: 80%;
+                max-width: 80%;
+                padding: 10px;
+                max-height: 90%;
+                min-height: 90%;
                 vertical-align: top;
                 text-align: left;
-                overflow-y: hidden;'>
+                overflow-y: visible;'>
+
+                <h1 style='font-size:72px;'>What We Grubbin' On</h1>
 
                 <a href='" . $recipes[$recipe]['url'] . "'>
 
-                <image style='width: 300px;
-                height: 300px;
-                object-fit: cover;' src='".$recipes[$recipe]['image']."'></image>
-
-                <div style='padding: 10px;
-                color: black;'>
-
-                <h1>Here's your recommendation: ".$recipes[$recipe]['name']."</h1>
-
-                </div>
-                
-                </a>
-
-                </center>
-                
-                <center style='padding: 0%;
-                box-shadow: 2px 4px 8px #00000054;
-                margin: 1%;
-                font-family: helvetica;
-                display:inline-block;
-                transition: ease 300ms;
-                min-width: 580px;
-                max-width: 580px;
-                padding: 10px;
-                max-height: 80%;
-                min-height: 80%;
-                vertical-align: top;
-                text-align: left;
-                overflow-y: hidden;'>
-                
-                <h1 style='font-size:72px;'>What We Grubbin' On</h1>
+                <h1>Here's your recommendation: ".$recipes[$recipe]['name']."</h1></a>
                 
                 <h1>Looking to try something new? <a href='https://whatwegrubbinon.com/explore'>Check out our new Explore page.</a></h1>
                 
@@ -594,6 +567,7 @@ namespace wwgo {
                 
                 <h1>Add recipes to your collection with one click!</h1>
                 
+
                 </center>
                 
                 </body>";
