@@ -16,6 +16,9 @@ div {
 input{
     margin-bottom: 5px;
 }
+select:not(:-internal-list-box) {
+    overflow: auto;
+}
 
 .recipe-button {
     text-decoration: none;
