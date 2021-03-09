@@ -40,7 +40,7 @@ echo $build->header();
     <div class='banner' style="background:url(style/profile.jpg);">
     <span style='background:transparent' class='spacer'></span>
             <div style="width:100%;padding:0 3%;">
-                <div class='block'>
+                <div id='profile' class='block'>
                     <image class='profile' src=<?php echo "'" . str_replace('s96','s240',$profile['image']) . "'"; ?>></image>
                     <div class='blockbody'>
                         <h3><?php echo $profile['fullname'] ?></h3>
