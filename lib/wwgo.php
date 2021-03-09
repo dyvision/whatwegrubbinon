@@ -541,6 +541,7 @@ namespace wwgo {
                 $msg = "<body style='background:transparent'><center style='padding: 0%;
                 box-shadow: 2px 4px 8px #00000054;
                 margin: 1%;
+                display:inline-block;
                 font-family: helvetica;
                 transition: ease 300ms;
                 min-width: 300px;
@@ -562,6 +563,7 @@ namespace wwgo {
                 box-shadow: 2px 4px 8px #00000054;
                 margin: 1%;
                 font-family: helvetica;
+                display:inline-block;
                 transition: ease 300ms;
                 min-width: 300px;
                 max-width: 300px;
