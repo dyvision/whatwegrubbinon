@@ -591,7 +591,7 @@ namespace wwgo {
             array_push($recs, $rec);
 
             $file = fopen(email_db_path, 'w');
-            fwrite($file, json_encode($rec));
+            fwrite($file, json_encode($recs));
             fclose($file);
 
             $result['message'] = $this->tid . ' Created';
