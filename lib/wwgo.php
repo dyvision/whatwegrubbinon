@@ -538,7 +538,7 @@ namespace wwgo {
 
             //perform a comparitive function on the item number that was returned
             if ($recipes[$recipe]['rid'] == $rid) {
-                $msg = "<a href='" . $recipes[$recipe]['url'] . "'>center style='padding: 0%;
+                $msg = "<a href='" . $recipes[$recipe]['url'] . "'><center style='padding: 0%;
                 box-shadow: 2px 4px 8px #00000054;
                 margin: 1%;
                 font-family: helvetica;
