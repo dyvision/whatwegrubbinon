@@ -26,6 +26,7 @@ $p = $_COOKIE['guid'];
     <link href='style/style.css' rel='stylesheet'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='shortcut icon' type='image/png' href='style/wwgologo.png' />
+    <script src="jquery-3.5.1.min.js"></script>
     <title>WWGO</title>
 </head>
 
