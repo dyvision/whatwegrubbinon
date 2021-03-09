@@ -9,7 +9,7 @@ $apikey = $_SERVER['PHP_AUTH_USER'];
 $apisecret = $_SERVER['PHP_AUTH_PW'];
 
 $auth = new auth();
-$auth->api_verify($apikey, $apisecret);
+$creds = json_decode($auth->api_verify($apikey, $apisecret),true);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $post = json_decode(file_get_contents('php://input'), true);
@@ -30,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $post = $_POST;
     }
     $rec = new recommendation($apikey);
-    print_r($rec->create($apikey, $post['tz'], $post['type'],$email));
+    
+    print_r($rec->create($apikey, $post['tz'], $post['type'],$creds['email']));
 } else {
     header('HTTP/1.1 403 Not Supported');
     exit("Method not supported");
