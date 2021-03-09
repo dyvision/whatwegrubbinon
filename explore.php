@@ -44,7 +44,7 @@ echo $build->header();
                     <h1 style='margin: 1%;font-size: 60;color: white;text-shadow: 0px 4px 6px #00000091;'>See What Other People Like:</h1>
                     <?php
                     $recipe = new recipe($_COOKIE['id']);
-                    $recipes = json_decode($recipe->explore(), true);
+                    $recipes = shuffle(json_decode($recipe->explore(), true));
                     foreach ($recipes as $food) { 
                         if(strlen($food['name']) > 34){
                             $foodname = substr($food['name'],0,35).'...';
