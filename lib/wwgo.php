@@ -522,7 +522,7 @@ namespace wwgo {
                     array_push($output, $recipe);
                 }
             }
-            return json_encode($output[rand(0, count($output))]);
+            return json_encode($output[rand(0, count($output)-1)]);
         }
         function get()
         {
