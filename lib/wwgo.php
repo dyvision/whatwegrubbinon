@@ -567,7 +567,7 @@ namespace wwgo {
                 transition: ease 300ms;
                 min-width: 600px;
                 max-width: 600px;
-                padding: 10px
+                padding: 10px;
                 max-height: 80%;
                 min-height: 80%;
                 vertical-align: top;
