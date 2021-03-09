@@ -256,5 +256,6 @@ h3 {
     }
     #profile {
         overflow-y: visible;
+        max-height: fit-content;
     }
 }
