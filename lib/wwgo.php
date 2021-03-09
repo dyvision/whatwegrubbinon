@@ -526,6 +526,7 @@ namespace wwgo {
         }
         function get()
         {
+            return file_get_contents(email_db_path);
         }
         function send($rid, $email)
         {
