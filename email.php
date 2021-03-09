@@ -21,9 +21,9 @@ $rec = new recommendation('113077615898413620126');
 $recs = json_decode($rec->get(), true);
 foreach ($recs as $email) {
     $script['script_run'] = $now;
-    $schedtime = date('Y-m-d H',strtotime($settime)+(60*60*$email['tz']));
+    $schedtime = date('Y-m-d H',strtotime($settime)+(60*60*$email['tz'])).':00';
     $script['scheduled_time'] = $schedtime;
-    if ($now == $schedtime.':00') {
+    if ($now == $schedtime) {
         $gen = new recommendation($email['id']);
         $result = json_decode($gen->generate(), true);
         $gen->send($result['rid'], $email['email']);
