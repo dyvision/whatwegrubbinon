@@ -432,9 +432,29 @@ namespace wwgo {
 
             $meta = get_meta_tags($url);
 
-            $this->rid = uniqid();
-            $this->name = $meta['twitter:title'];
             $this->image = $meta['twitter:image'];
+
+            if($this->image == ''){
+                $this->image = $meta['pinterest:media'];
+            }
+
+            if($this->image == ''){
+                $this->image = $meta['og:image'];
+            }
+
+            $this->name = $meta['twitter:title'];
+
+            if($this->name == ''){
+                $this->name = $meta['pinterest:title'];
+            }
+
+            if($this->name == ''){
+                $this->name = $meta['og:title'];
+            }
+
+            $this->rid = uniqid();
+            
+            
             $this->url = $url;
 
             $recipe['rid'] = $this->rid;
