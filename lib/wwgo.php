@@ -545,14 +545,15 @@ namespace wwgo {
                 transition: ease 300ms;
                 min-width: 500px;
                 max-width: 500px;
-                max-height: 80%;
-                min-height: 80%;
+                max-height: 90%;
+                min-height: 90%;
                 vertical-align: top;
                 text-align: left;
                 background: #f5f5f5;
                 overflow-y: hidden;'>
+                
                 <image style='width: 500px;
-                height: 500px;
+                height: 300px;
                 object-fit: cover;' src='".$recipes[$recipe]['image']."'></image>
                 <div style='padding: 10px;
                 color: black;'>
