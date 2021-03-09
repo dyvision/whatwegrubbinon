@@ -425,7 +425,7 @@ namespace wwgo {
          * @param string $url The Recipe's URL
          * @return string JSON - Returns a success message
          */
-        function create( $url)
+        function create($url)
         {
             //get array
             $recipes = json_decode(file_get_contents(recipe_db_path), true);
