@@ -66,7 +66,7 @@ echo $build->header();
 
                     </div>
                 </div>
-                <div class='bigblock'>
+                <div id='list' class='bigblock'>
                     <h1 style='margin: 1%;font-size: 60;color: white;text-shadow: 0px 4px 6px #00000091;'>Recipes</h1>
                     <?php
                     $recipe = new recipe($_COOKIE['id']);
@@ -75,7 +75,7 @@ echo $build->header();
                         <div class='innerblock'>
                             <a href='<?php echo $food['url'] ?>'>
                                 <image class='profile' src='<?php echo $food['image'] ?>'></image></a>
-                                <div class='blockbody'>
+                                <div  class='blockbody'>
                                     <h3><?php echo $food['name'] ?></h3>
                                     <button type='button' class='recipe-button' <?php echo $disabled; ?> onclick="delete_recipe(<?php echo '\''.$food['rid'].'\',\''.$_COOKIE['id'].'\',\''.$_COOKIE['guid'].'\''; ?>);">Remove Recipe</button>
                                 
