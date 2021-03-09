@@ -539,7 +539,8 @@ namespace wwgo {
             //perform a comparitive function on the item number that was returned
             if ($recipes[$recipe]['rid'] == $rid) {
                 $msg = "<center><h1>Here's your recommendation: <a href='" . $recipes[$recipe]['url'] . "'>" . $recipes[$recipe]['name'] . "</a><h1></center>";
-                mail($email, 'What We Grubbin\' On', $msg);
+                $headers = "From: no-reply@whatwegrubbinon.com";
+                mail($email, 'What We Grubbin\' On', $msg,$headers);
             }
         }
         function create($id, $tz, $type)
