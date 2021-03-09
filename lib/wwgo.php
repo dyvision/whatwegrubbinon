@@ -455,12 +455,12 @@ namespace wwgo {
             $this->rid = uniqid();
             
             
-            $this->url = $url;
+            $this->url = 'https://justtherecipe.app/recipe?url='.$url;
 
             $recipe['rid'] = $this->rid;
             $recipe['name'] = $this->name;
             $recipe['image'] = $this->image;
-            $recipe['url'] = $url;
+            $recipe['url'] = $this->url;
             $recipe['id'] = [$this->id];
 
             array_push($recipes, $recipe);
