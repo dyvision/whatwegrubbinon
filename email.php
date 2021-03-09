@@ -22,7 +22,7 @@ $recs = json_decode($rec->get(), true);
 foreach ($recs as $email) {
     $script['script_run'] = $now;
     $schedtime = date('Y-m-d H',strtotime($settime)+(60*60*$email['tz']));
-    $script['scheduled_time'] = gmdate("Y-m-d ").$hour;
+    $script['scheduled_time'] = $schedtime;
     if ($now == $schedtime.':00') {
         $gen = new recommendation($email['id']);
         $result = json_decode($gen->generate(), true);
