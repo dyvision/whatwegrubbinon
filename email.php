@@ -21,8 +21,8 @@ $rec = new recommendation('113077615898413620126');
 $recs = json_decode($rec->get(), true);
 foreach ($recs as $email) {
     
-    $now = date('Y-m-d H',strtotime(gmmktime())+(60*60*$email['tz'])).':00';
-    $schedtime = date('Y-m-d H',strtotime(gmmktime())+(60*60*($outputs[$type]+$email['tz']))).':00';
+    $now = date('Y-m-d H',(gmmktime())+(60*60*$email['tz'])).':00';
+    $schedtime = date('Y-m-d H',(gmmktime()+(60*60*($outputs[$type]+$email['tz'])))).':00';
 
     $script['tid'] = $email['tid'];
     $script['script_run'] = $now;
