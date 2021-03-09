@@ -503,7 +503,6 @@ namespace wwgo {
     {
         public $id;
         public $tz;
-        public $email;
 
         function __construct($id)
         {
