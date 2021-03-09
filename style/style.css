@@ -16,9 +16,13 @@ div {
 input{
     margin-bottom: 5px;
 }
-select:not(:-internal-list-box) {
-    overflow: auto;
-}
+select {
+    width: 100%;
+    overflow: hidden;
+    white-space: pre;
+    text-overflow: ellipsis;
+    -webkit-appearance: none;
+  }
 
 .recipe-button {
     text-decoration: none;
