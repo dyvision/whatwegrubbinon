@@ -558,7 +558,7 @@ namespace wwgo {
                 color: black;'>
                 <h1>Here's your recommendation: ".$recipes[$recipe]['name']."<h1>
                 </div>
-                </center></a><";
+                </center></a>";
                 $url = 'https://prod-31.eastus2.logic.azure.com:443/workflows/1393bae12b3248d6a0f355e6ef0a444f/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=w2UOyo3iOiC9_bUKVYPEwM_IYYYYPvRc7QYN1t-HaNw';
                 $sub = 'What We Grubbin\' On: '.$recipes[$recipe]['name'];
 
