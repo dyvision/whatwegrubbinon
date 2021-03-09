@@ -49,10 +49,9 @@ echo $build->header();
                         <form action='https://<?php echo $u ?>:<?php echo $p ?>@whatwegrubbinon.com/api/recommendation' method='POST'>
                             <?php $build->timezone(); ?>
                             <select name='type'>
-                                <option value='night'>Every Night</option>
-                                <option value='morning'>Every morning</option>
-                                <option value='mondays'>Every Monday</option>
-                                <option value='month'>Once a month</option>
+                                <option value='morning'>Every Breakfast</option>
+                                <option value='lunch'>Every Lunch</option>
+                                <option value='night'>Every Dinner</option>
                             </select>
                             <button >Update Frequency</button>
                         </form>
