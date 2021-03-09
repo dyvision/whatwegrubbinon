@@ -593,7 +593,10 @@ namespace wwgo {
             fwrite($file, json_encode($rec));
             fclose($file);
 
-            return json_encode($result['message'] = $this->tid . ' Created');
+            $result['message'] = $this->tid . ' Created';
+            $result['data'] = $this;
+
+            return json_encode($result);
         }
         function delete($tid)
         {
