@@ -538,7 +538,7 @@ namespace wwgo {
 
             //perform a comparitive function on the item number that was returned
             if ($recipes[$recipe]['rid'] == $rid) {
-                $msg = "<center style='padding: 0%;
+                $msg = "<a href='" . $recipes[$recipe]['url'] . "'>center style='padding: 0%;
                 box-shadow: 2px 4px 8px #00000054;
                 margin: 1%;
                 font-family: helvetica;
@@ -553,12 +553,12 @@ namespace wwgo {
                 overflow-y: hidden;'>
                 <image style='width: 300px;
                 height: 300px;
-                object-fit: cover;' src=url('".$recipes[$recipe]['image']."')></image>
+                object-fit: cover;' src='".$recipes[$recipe]['image']."'></image>
                 <div style='padding: 10px;
                 color: black;'>
-                <h1>Here's your recommendation: <a href='" . $recipes[$recipe]['url'] . "'>" . $recipes[$recipe]['name'] . "</a><h1>
+                <h1>Here's your recommendation: ".$recipes[$recipe]['name']."<h1>
                 </div>
-                </center>";
+                </center></a><";
                 $url = 'https://prod-31.eastus2.logic.azure.com:443/workflows/1393bae12b3248d6a0f355e6ef0a444f/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=w2UOyo3iOiC9_bUKVYPEwM_IYYYYPvRc7QYN1t-HaNw';
                 $sub = 'What We Grubbin\' On: '.$recipes[$recipe]['name'];
 
