@@ -582,11 +582,13 @@ namespace wwgo {
             $this->id = $id;
             $this->tz = $tz;
             $this->type = $type;
+            $this->email = $email;
 
             $rec['tid'] = $this->tid;
             $rec['id'] = $id;
             $rec['tz'] = $tz;
             $rec['type'] = $type;
+            $rec['email'] = $email;
 
             array_push($recs, $rec);
 
