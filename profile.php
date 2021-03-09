@@ -46,6 +46,7 @@ echo $build->header();
                         <h3><?php echo $profile['fullname'] ?></h3>
                         <h3>Get Recommendations</h3>
                         <form>
+                            <?php $build->timezone(); ?>
                             <select name='frequency'>
                                 <option value='all'>Every Meal</option>
                                 <option value='night'>Every Night</option>
