@@ -499,16 +499,15 @@ namespace wwgo {
         {
         }
     }
-    class recommendations
+    class recommendation
     {
         public $id;
         public $tz;
         public $email;
 
-        function __construct($id, $guid)
+        function __construct($id)
         {
             $this->id = $id;
-            $this->guid = $guid;
             return;
         }
         function generate()
