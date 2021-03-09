@@ -46,7 +46,7 @@ echo $build->header();
                         <h3><?php echo $profile['fullname'] ?></h3>
                         <h3>Get Recommendations</h3>
                         <?php if($_GET['message'] == 1){echo '<h4 style="color:lightblue">Schedule Set</h4>';} ?>
-                        <form action='api/recommendation' method='PUT'>
+                        <form action='https://<?php echo $u ?>:<?php echo $p ?>@whatwegrubbinon.com/api/recommendation' method='PUT'>
                             <?php $build->timezone(); ?>
                             <select name='type'>
                                 <option value='night'>Every Night</option>
