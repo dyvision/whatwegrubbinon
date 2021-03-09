@@ -72,12 +72,18 @@ echo $build->header();
                     <?php
                     $recipe = new recipe($_COOKIE['id']);
                     $recipes = json_decode($recipe->get(), true);
-                    foreach ($recipes as $food) { ?>
+                    foreach ($recipes as $food) { 
+                        if(strlen($food['name']) > 34){
+                            $foodname = substr($food['name'],0,35).'...';
+                        } else {
+                            $foodname = $food['name'];
+                        }
+                        ?>
                         <div if="<?php echo $food['rid']; ?>" class='innerblock'>
                             <a href='<?php echo $food['url'] ?>'>
                                 <image class='profile' src='<?php echo $food['image'] ?>'></image></a>
                                 <div  class='blockbody'>
-                                    <h3><?php echo $food['name'] ?></h3>
+                                    <h3><?php echo $foodname ?></h3>
                                     <button type='button' class='recipe-button' <?php echo $disabled; ?> onclick="delete_recipe(<?php echo '\''.$food['rid'].'\',\''.$_COOKIE['id'].'\',\''.$_COOKIE['guid'].'\''; ?>);">Remove Recipe</button>
                                 
                                 </div>
