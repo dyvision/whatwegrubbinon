@@ -551,8 +551,8 @@ namespace wwgo {
                 text-align: left;
                 background: #f5f5f5;
                 overflow-y: hidden;'>
-                <image style='width: 300px;
-                height: 300px;
+                <image style='width: 500px;
+                height: 500px;
                 object-fit: cover;' src='".$recipes[$recipe]['image']."'></image>
                 <div style='padding: 10px;
                 color: black;'>
