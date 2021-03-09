@@ -549,7 +549,6 @@ namespace wwgo {
                 min-height: 90%;
                 vertical-align: top;
                 text-align: left;
-                background: #f5f5f5;
                 overflow-y: hidden;'>
 
                 <image style='width: 500px;
