@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     print_r($rec->send($post['rid'], $post['email']));
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $rec = new recommendation($apikey);
-    print_r($rec->generate($_GET['rid']));
+    print_r($rec->generate());
 } elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     $rec = new recommendation($apikey);
     print_r($rec->delete($_GET['tid']));
