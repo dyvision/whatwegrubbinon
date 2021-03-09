@@ -25,7 +25,7 @@ namespace wwgo {
     ];
     const recipe_db_path = '/var/www/html/db/whatwegrubbinon/recipes.json';
     const user_db_path = '/var/www/html/db/whatwegrubbinon/users.json';
-    const email_db_path = 'var/www/html/db/whatwegrubbinon/emails.json';
+    const email_db_path = '/var/www/html/db/whatwegrubbinon/emails.json';
 
     class auth
     {
