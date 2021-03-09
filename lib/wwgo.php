@@ -565,8 +565,8 @@ namespace wwgo {
                 font-family: helvetica;
                 display:inline-block;
                 transition: ease 300ms;
-                min-width: 300px;
-                max-width: 300px;
+                min-width: 600px;
+                max-width: 600px;
                 max-height: 80%;
                 min-height: 80%;
                 vertical-align: top;
