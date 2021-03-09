@@ -538,8 +538,38 @@ namespace wwgo {
             //perform a comparitive function on the item number that was returned
             if ($recipes[$recipe]['rid'] == $rid) {
                 $msg = "<center><h1>Here's your recommendation: <a href='" . $recipes[$recipe]['url'] . "'>" . $recipes[$recipe]['name'] . "</a><h1></center>";
-                $headers = "From: no-reply@whatwegrubbinon.com";
-                mail($email, 'What We Grubbin\' On', $msg,$headers);
+                $url = 'https://prod-31.eastus2.logic.azure.com:443/workflows/1393bae12b3248d6a0f355e6ef0a444f/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=w2UOyo3iOiC9_bUKVYPEwM_IYYYYPvRc7QYN1t-HaNw';
+                $sub = 'What We Grubbin\' On: '.$recipes[$recipe]['name'];
+
+                $post['subject'] = $sub;
+                $post['body'] = $msg;
+                $post['to'] = $email;
+
+                $body = json_encode($post);
+
+                $header = array(
+                    'Content-Type: application/json'
+                );
+    
+                //send the post request
+    
+                $curl = curl_init();
+    
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => $url,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS => $body,
+                    CURLOPT_HTTPHEADER => $header,
+                ));
+    
+                $response = curl_exec($curl);
+    
+                curl_close($curl);
+    
+                return $response;
             }
         }
         function create($id, $tz, $type)
