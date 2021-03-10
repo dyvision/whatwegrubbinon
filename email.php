@@ -9,9 +9,11 @@ $times = [];
 
 $outputs = '';
 
-$outputs['night'] = '18';
-$outputs['lunch'] = '12';
-$outputs['morning'] = '8';
+$outputs = array(
+    'night' => 18,
+    'lunch' => 12,
+    'morning' => 8
+);
 
 $settime = gmdate("Y-m-d ").'00:00';
 
