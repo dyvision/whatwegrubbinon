@@ -7,8 +7,6 @@ use wwgo\recommendation;
 
 $times = [];
 
-$outputs = '';
-
 $outputs = array(
     'night' => 18,
     'lunch' => 12,
