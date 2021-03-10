@@ -22,7 +22,7 @@ $recs = json_decode($rec->get(), true);
 foreach ($recs as $email) {
     
     $now = date('Y-m-d H',(gmmktime())+(60*60*$email['tz'])).':00';
-    $schedtime = date('Y-m-d H',strtotime($settime)+(60*60*($outputs[$type]))).':00';
+    $schedtime = date('Y-m-d H',strtotime($settime)+(60*60*($outputs[$email['type']]))).':00';
 
     $script['tid'] = $email['tid'];
     $script['script_run'] = $now;
