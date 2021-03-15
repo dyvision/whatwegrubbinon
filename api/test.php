@@ -19,9 +19,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($post == null) {
         $post = $_POST;
     }
+
+    $meta = get_meta_tags($post['url']);
+
+    $image = $meta['twitter:image'];
+
+    if ($image == '') {
+        $image = $meta['pinterest:media'];
+    }
+
+    if ($image == '') {
+        $image = $meta['og:image'];
+    }
+
+
     $filter = new misc();
     $food = new recipe($apikey);
-    $filter_results = json_decode($filter->scan_content(null, $post['url']), true)['responses'][0]['safeSearchAnnotation'];
+    $filter_results = json_decode($filter->scan_content(null, $image), true)['responses'][0]['safeSearchAnnotation'];
     if ($_POST != null) {
         foreach ($filter_results as $key) {
             if (in_array($key, array('POSSIBLE', 'LIKELY', 'VERY_LIKELY'))) {
