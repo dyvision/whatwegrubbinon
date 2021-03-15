@@ -36,7 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 array_push($results['reasons'], $result);
             }
         }
-        exit(json_encode($results));
+        if (count($results['reasons']) > 0) {
+            exit(json_encode($results));
+        } else {
+        }
     }
     #print_r($food->create($post['url']));
     if ($_POST != null) {
