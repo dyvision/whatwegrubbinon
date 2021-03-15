@@ -804,7 +804,7 @@ namespace wwgo {
                     \"image\":{
                       \"source\":{
                         \"imageUri\":
-                          $link
+                          \"$link\"
                       }
                     },
                     \"features\":[
@@ -833,7 +833,7 @@ namespace wwgo {
                 CURLOPT_FOLLOWLOCATION => true,
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => json_encode($body),
+                CURLOPT_POSTFIELDS => $body,
                 CURLOPT_HTTPHEADER => $header,
             ));
 
