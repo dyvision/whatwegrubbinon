@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($filter->filter_url($post['url']) == true) {
     } else {
         $results['message'] = 'rejected due to non-food related url';
-        $result = 'detected non-food themese';
+        $result = 'detected non-food themes';
         array_push($results['reasons'], $result);
         exit(json_encode($results));
     }

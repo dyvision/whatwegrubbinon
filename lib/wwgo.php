@@ -41,7 +41,8 @@ namespace wwgo {
         'delcicious',
         'delish',
         'grub',
-        'cook'
+        'cook',
+        'bake'
     ];
 
     class auth
