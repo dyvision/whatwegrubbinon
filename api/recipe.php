@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($filter->filter_url($post['url']) == true) {
         } else {
             header('location: ../profile?error=5');
+            exit();
         }
     } else {
         if ($filter->filter_url($post['url']) == true) {
