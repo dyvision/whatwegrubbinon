@@ -434,28 +434,28 @@ namespace wwgo {
 
             $this->image = $meta['twitter:image'];
 
-            if($this->image == ''){
+            if ($this->image == '') {
                 $this->image = $meta['pinterest:media'];
             }
 
-            if($this->image == ''){
+            if ($this->image == '') {
                 $this->image = $meta['og:image'];
             }
 
             $this->name = $meta['twitter:title'];
 
-            if($this->name == ''){
+            if ($this->name == '') {
                 $this->name = $meta['pinterest:title'];
             }
 
-            if($this->name == ''){
+            if ($this->name == '') {
                 $this->name = $meta['og:title'];
             }
 
             $this->rid = uniqid();
-            
-            
-            $this->url = 'https://justtherecipe.app/recipe?url='.$url;
+
+
+            $this->url = 'https://justtherecipe.app/recipe?url=' . $url;
 
             $recipe['rid'] = $this->rid;
             $recipe['name'] = $this->name;
@@ -792,6 +792,56 @@ namespace wwgo {
         function randomize_list(int $list_count)
         {
             return json_encode(shuffle(range(0, $list_count)));
+        }
+        function scan_content($type = 'image', $link)
+        {
+            $types = ['image', 'link'];
+
+            $body = "
+            {
+                \"requests\":[
+                  {
+                    \"image\":{
+                      \"source\":{
+                        \"imageUri\":
+                          $link
+                      }
+                    },
+                    \"features\":[
+                      {
+                        \"type\":\"SAFE_SEARCH_DETECTION\"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ";
+
+            $url = 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyCIQeqBIaZBZl8I3-cpn_ZVOsX4RMatXmE';
+
+            $header = array(
+                'Content-Type: application/json'
+            );
+
+            //send the post request
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => $body,
+                CURLOPT_HTTPHEADER => $header,
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+
+            return $response;
         }
     }
 }

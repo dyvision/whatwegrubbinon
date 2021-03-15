@@ -4,6 +4,7 @@ include('../lib/wwgo.php');
 
 use wwgo\auth;
 use wwgo\recipe;
+use wwgo\misc;
 
 $apikey = $_SERVER['PHP_AUTH_USER'];
 $apisecret = $_SERVER['PHP_AUTH_PW'];
@@ -16,7 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($post == null) {
         $post = $_POST;
     }
+    $filter = new misc();
     $food = new recipe($apikey);
+    $filter_results = json_decode($filter->scan_content(null, $post['url']), true);
+    if ($_POST != null) {
+        foreach ($filter_results as $key) {
+            if (in_array($key, array('POSSIBLE', 'LIKELY', 'VERY_LIKELY'))) {
+                header('location: ../profile?error=6');
+            }
+        }
+    }
     print_r($food->create($post['url']));
     if ($_POST != null) {
         header('location: ../profile');
@@ -34,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     $food = new recipe($apikey);
     print_r($food->add_user($post['rid']));
-}else {
+} else {
     header('HTTP/1.1 403 Not Supported');
     exit("Method not supported");
 }
