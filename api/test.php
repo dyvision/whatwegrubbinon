@@ -43,7 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('location: ../profile');
     } else {
         $results['message'] = 'created recipe';
-        $result = 'none';
+        $results['reasons'] = ['none'];
+        exit(json_encode($results));
     }
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $food = new recipe($apikey);
