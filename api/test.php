@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $filter = new misc();
     $food = new recipe($apikey);
     $filter_results = json_decode($filter->scan_content(null, $post['url']), true);
+    print_r(json_encode($filter_results));
     if ($_POST != null) {
         foreach ($filter_results as $key) {
             if (in_array($key, array('POSSIBLE', 'LIKELY', 'VERY_LIKELY'))) {
@@ -30,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         foreach ($filter_results as $key) {
             if (in_array($key, array('POSSIBLE', 'LIKELY', 'VERY_LIKELY'))) {
                 $result['error'] = 'detected suggestive themes';
+                print_r(json_encode($result));
                 exit(json_encode($result));
             }
         }
