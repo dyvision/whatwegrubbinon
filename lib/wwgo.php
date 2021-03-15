@@ -866,12 +866,12 @@ namespace wwgo {
         {
             foreach ($this->filter as $item) {
                 if (strpos($url, $item) !== false) {
-                    return false;
+                    return true;
                 } else {
 
                 }
             }
-            return true;
+            return false;
         }
     }
 }
