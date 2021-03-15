@@ -26,6 +26,22 @@ namespace wwgo {
     const recipe_db_path = '/var/www/html/db/whatwegrubbinon/recipes.json';
     const user_db_path = '/var/www/html/db/whatwegrubbinon/users.json';
     const email_db_path = '/var/www/html/db/whatwegrubbinon/emails.json';
+    const site_filter = [
+        'food',
+        'recipe',
+        'spice',
+        'vegan',
+        'vegetarian',
+        'meat',
+        'fish',
+        'mushroom',
+        'yum',
+        'tasty',
+        'epicurious',
+        'delcicious',
+        'delish',
+        'grub'
+    ];
 
     class auth
     {
@@ -785,8 +801,11 @@ namespace wwgo {
     }
     class misc
     {
+        public $filter;
+
         function __construct()
         {
+            $this->filter = site_filter;
             return;
         }
         function randomize_list(int $list_count)
@@ -842,6 +861,17 @@ namespace wwgo {
             curl_close($curl);
 
             return $response;
+        }
+        function filter_url($url)
+        {
+            foreach ($this->filter as $item) {
+                if (strpos($url, $item) !== false) {
+                    return false;
+                } else {
+
+                }
+            }
+            return true;
         }
     }
 }

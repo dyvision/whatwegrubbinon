@@ -55,6 +55,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
         }
     }
+    if ($filter->filter_url($post['url']) == true) {
+    } else {
+        $results['message'] = 'rejected due to non-food related url';
+        $result = 'detected non-food themese';
+        array_push($results['reasons'], $result);
+        exit(json_encode($results));
+    }
+
     #print_r($food->create($post['url']));
     if ($_POST != null) {
         header('location: ../profile');
