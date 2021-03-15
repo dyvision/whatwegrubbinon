@@ -14,6 +14,7 @@ $auth->api_verify($apikey, $apisecret);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $results = [];
+    $results['reasons'] = [];
     $post = json_decode(file_get_contents('php://input'), true);
     if ($post == null) {
         $post = $_POST;
@@ -31,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         foreach (array_values($filter_results) as $key) {
             if (in_array($key, array('POSSIBLE', 'LIKELY', 'VERY_LIKELY'))) {
-                $result['error'] = 'detected ' . $key . ' themes';
-                array_push($results, $result);
+                $result = 'detected ' . $key . ' themes';
+                array_push($results['reasons'], $result);
             }
         }
         exit(json_encode($results));
