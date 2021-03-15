@@ -37,12 +37,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $food = new recipe($apikey);
     $filter_results = json_decode($filter->scan_content(null, $image), true)['responses'][0]['safeSearchAnnotation'];
 
-    if ($filter->filter_url($post['url']) == true) {
+    if ($_POST != null) {
+        if ($filter->filter_url($post['url']) == true) {
+        } else {
+            header('location: ../profile?error=5');
+        }
     } else {
-        $results['message'] = 'rejected due to non-food related url';
-        $result = 'detected non-food themes';
-        array_push($results['reasons'], $result);
-        exit(json_encode($results));
+        if ($filter->filter_url($post['url']) == true) {
+        } else {
+            $results['message'] = 'rejected due to non-food related url';
+            $result = 'detected non-food themes';
+            array_push($results['reasons'], $result);
+            exit(json_encode($results));
+        }
     }
     if ($_POST != null) {
         foreach ($filter_results as $key) {
