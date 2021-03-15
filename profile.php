@@ -45,7 +45,10 @@ echo $build->header();
                     <div class='blockbody'>
                         <h3><?php echo $profile['fullname'] ?></h3>
                         <h3>Get Recommendations</h3>
-                        <?php if($_GET['message'] == 1){echo '<h4 style="color:lightblue">Schedule Set</h4>';} ?>
+                        <?php if($_GET['message'] == 1){echo '<h4 style="color:lightblue">Schedule Set</h4>';}
+                        if($_GET['error'] == 5){echo '<h4 style="color:red">Rejected recipe because it is not from a food related site</h4>';} elseif($_GET['error'] == 6){
+                            echo '<h4 style="color:red">Rejected recipe because it contained explicit data</h4>';
+                        } ?>
                         <form action='https://<?php echo $u ?>:<?php echo $p ?>@whatwegrubbinon.com/api/recommendation' method='POST'>
                             <?php $build->timezone(); ?>
                             <select name='type'>
