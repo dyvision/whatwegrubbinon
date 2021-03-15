@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     } else {
-        foreach (array_values($filter_results) as $key) {
-            if (in_array($key, array('POSSIBLE', 'LIKELY', 'VERY_LIKELY'))) {
+        foreach ($filter_results as $key => $value) {
+            if (in_array($value, array('POSSIBLE', 'LIKELY', 'VERY_LIKELY'))) {
                 $result = 'detected ' . $key . ' themes';
                 array_push($results['reasons'], $result);
             }
