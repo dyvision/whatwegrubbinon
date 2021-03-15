@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     $filter = new misc();
     $food = new recipe($apikey);
-    $filter_results = json_decode($filter->scan_content(null, $post['url']), true);
+    $filter_results = json_decode($filter->scan_content(null, $post['url']), true)[0]['responses'][0]['safeSearchAnnotation'];
     array_push($results,$filter_results);
     if ($_POST != null) {
         foreach ($filter_results as $key) {
