@@ -26,6 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header('location: ../profile?error=6');
             }
         }
+    } else {
+        foreach ($filter_results as $key) {
+            if (in_array($key, array('POSSIBLE', 'LIKELY', 'VERY_LIKELY'))) {
+                $result['error'] = 'detected suggestive themes';
+                exit(json_encode($result));
+            }
+        }
     }
     print_r($food->create($post['url']));
     if ($_POST != null) {
