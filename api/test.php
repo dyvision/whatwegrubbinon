@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     } else {
-        foreach ($filter_results as $key) {
+        foreach (array_values($filter_results) as $key) {
             if (in_array($key, array('POSSIBLE', 'LIKELY', 'VERY_LIKELY'))) {
                 $result['error'] = 'detected ' . $key . ' themes';
                 array_push($restults, $result);
