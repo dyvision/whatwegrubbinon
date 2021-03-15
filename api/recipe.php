@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    #print_r($food->create($post['url']));
+    $food->create($post['url']);
     if ($_POST != null) {
         header('location: ../profile');
     } else {
