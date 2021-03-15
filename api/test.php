@@ -13,7 +13,7 @@ $auth = new auth();
 $auth->api_verify($apikey, $apisecret);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $result['message'] = '';
+    $results['message'] = '';
     $results['reasons'] = [];
     $post = json_decode(file_get_contents('php://input'), true);
     if ($post == null) {
