@@ -36,6 +36,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $filter = new misc();
     $food = new recipe($apikey);
     $filter_results = json_decode($filter->scan_content(null, $image), true)['responses'][0]['safeSearchAnnotation'];
+
+    if ($filter->filter_url($post['url']) == true) {
+    } else {
+        $results['message'] = 'rejected due to non-food related url';
+        $result = 'detected non-food themes';
+        array_push($results['reasons'], $result);
+        exit(json_encode($results));
+    }
     if ($_POST != null) {
         foreach ($filter_results as $key) {
             if (in_array($key, array('POSSIBLE', 'LIKELY', 'VERY_LIKELY'))) {
@@ -54,13 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit(json_encode($results));
         } else {
         }
-    }
-    if ($filter->filter_url($post['url']) == true) {
-    } else {
-        $results['message'] = 'rejected due to non-food related url';
-        $result = 'detected non-food themes';
-        array_push($results['reasons'], $result);
-        exit(json_encode($results));
     }
 
     #print_r($food->create($post['url']));
