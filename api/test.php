@@ -13,6 +13,7 @@ $auth = new auth();
 $auth->api_verify($apikey, $apisecret);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $results = [];
     $post = json_decode(file_get_contents('php://input'), true);
     if ($post == null) {
         $post = $_POST;
@@ -20,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $filter = new misc();
     $food = new recipe($apikey);
     $filter_results = json_decode($filter->scan_content(null, $post['url']), true);
-    print_r(json_encode($filter_results));
+    array_push($results,$filter_results);
     if ($_POST != null) {
         foreach ($filter_results as $key) {
             if (in_array($key, array('POSSIBLE', 'LIKELY', 'VERY_LIKELY'))) {
@@ -30,11 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         foreach ($filter_results as $key) {
             if (in_array($key, array('POSSIBLE', 'LIKELY', 'VERY_LIKELY'))) {
-                $result['error'] = 'detected suggestive themes';
-                print_r(json_encode($result));
-                exit(json_encode($result));
+                $result['error'] = 'detected ' . $key . ' themes';
+                array_push($restults, $result);
             }
         }
+        exit(json_encode($results));
     }
     #print_r($food->create($post['url']));
     if ($_POST != null) {
