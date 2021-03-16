@@ -866,8 +866,9 @@ namespace wwgo {
         }
         function filter_url($url)
         {
+            $url = explode('?',$url);
             foreach ($this->filter as $item) {
-                if (strpos($url, $item) === false) {
+                if (strpos($url[0], $item) === false) {
                 } else {
                     return true;
                 }
